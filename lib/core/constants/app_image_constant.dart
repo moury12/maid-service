@@ -30,6 +30,7 @@ String dummyCatIcon = 'assets/dummy/cat_icon_1.png';
 ///============================ Images =========================///
 
 String mermaidLogo = 'assets/image/mermaid_logo.png';
+String mermaidTextLogo = 'assets/image/mermaid_text_logo.png';
 String mermaidPremiumImage = 'assets/image/mermaid_premium.png';
 String mermaidLogoWithText = 'assets/image/mermaid_with_text_logo.png';
 String onboardingImage1 = 'assets/image/onboard_image_1.png';

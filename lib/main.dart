@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
-    print(MediaQuery.of(context).size.height);
+/*    print(MediaQuery.of(context).size.width);
+    print(MediaQuery.of(context).size.height);*/
     return ScreenUtilInit(
-      designSize: const Size(360, 690), // Base design size
+      designSize: const Size(423.52, 945.88), // Base design size
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {

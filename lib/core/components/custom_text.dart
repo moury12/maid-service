@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:maid_service/core/constants/app_colors.dart';
+import 'package:maid_service/core/constants/fontsize_constant.dart';
+
+class CustomText extends StatelessWidget {
+  final String text;
+  final TextStyle? style; // Allows full dynamic styling
+  final Color? color; // Overrides for individual style properties
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final TextAlign? textAlign;
+  final TextOverflow? overflow;
+  final int? maxLines;
+
+  const CustomText({
+    Key? key,
+    required this.text,
+    this.style,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign ?? TextAlign.start,
+      maxLines: maxLines,
+      overflow: overflow ?? TextOverflow.ellipsis,
+      style: style?.copyWith(
+        color: color ?? style?.color,
+        fontSize: fontSize ?? style?.fontSize,
+        fontWeight: fontWeight ?? style?.fontWeight,
+      ) ??
+          TextStyle(
+            color: color ?? AppColors.kTextColor,
+            fontSize: fontSize ?? getFontSizeSmall(context),
+            fontWeight: fontWeight ?? FontWeight.normal,
+          ),
+    );
+  }
+}
