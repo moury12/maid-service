@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:maid_service/core/constants/app_colors.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      primarySwatch: Colors.blue,
-      scaffoldBackgroundColor: Colors.white,
+
+      scaffoldBackgroundColor: AppColors.kWhiteColor,
       textTheme: const TextTheme(
        /* bodyText1: TextStyle(fontSize: 16, color: Colors.black),
         bodyText2: TextStyle(fontSize: 14, color: Colors.black54),

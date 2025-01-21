@@ -44,7 +44,7 @@ const protestRiotRegular = TextStyle(
 
 const poppinsBold = TextStyle(
   fontFamily: 'Poppins',
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.bold,
 );
 
 const poppinsExtraBold = TextStyle(

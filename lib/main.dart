@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             title: 'Maid Service App',
             debugShowCheckedModeBanner: false,
+            themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme, // Custom theme
             darkTheme: AppTheme.darkTheme, // Optional dark theme
             initialRoute: SplashPage.routeName,

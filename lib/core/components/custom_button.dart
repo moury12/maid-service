@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:maid_service/core/components/custom_text.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
@@ -58,10 +59,10 @@ class CustomButton extends StatelessWidget {
             vertical: marginVerticel, horizontal: marginHorizontal),
         alignment: Alignment.center,
         height: height,
-        padding: padding12V,
+        padding: padding16V,
         width: width,
         decoration: BoxDecoration(
-            border: Border.all(color: borderColor),
+            border: Border.all(color: borderColor,width: 1.5),
             borderRadius: BorderRadius.circular(radius ?? 63.r),
             color: fillColor),
         child: isLoading == true
@@ -70,13 +71,7 @@ class CustomButton extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                    textAlign: TextAlign.center,
-                    title,
-                    style: poppinsMedium.copyWith(
-                        color: textColor,
-                        fontSize:
-                        fontSize ?? getFontSizeSemiSmall(context))),
+
                 icon != null || img != null
                     ? space8W
                     : const SizedBox.shrink(),
@@ -85,7 +80,7 @@ class CustomButton extends StatelessWidget {
                   img ?? '',
                   height: 24.w,
                   width: 24.w,
-                  color: AppColors.kWhiteColor,
+
                 )
                     : icon != null
                     ? Icon(
@@ -93,6 +88,14 @@ class CustomButton extends StatelessWidget {
                   size: 24.sp,
                 )
                     : const SizedBox.shrink(),
+                CustomText(
+                    text: title,
+                    textAlign: TextAlign.center,
+
+                    style: poppinsSemiBold.copyWith(
+                        color: textColor,
+                        fontSize:
+                        fontSize ?? getFontSizeSemiSmall(context))),
               ],
             ),
       ),

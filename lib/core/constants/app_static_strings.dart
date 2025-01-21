@@ -3,7 +3,7 @@ class AppStaticString{
   static const String  continueButton= "Continue";
   static const String  continueAppleButton= "Continue with Apple";
   static const String  continueGoogleButton= "Continue with Google";
-  static const String  continueEmailButton= "Sign In With Email";
+  static const String  signInWithEmail= "Sign In With Email";
   static const String  donotHaveAccButton= "Don’t Have an account?";
   static const String  signInButton= "Sign In";
   static const String  signUpButton= "Sign up";

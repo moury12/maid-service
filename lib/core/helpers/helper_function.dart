@@ -1,0 +1,148 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:maid_service/core/components/custom_button.dart';
+import 'package:maid_service/core/components/custom_text.dart';
+import 'package:maid_service/core/components/custom_text_button.dart';
+import 'package:maid_service/core/constants/app_colors.dart';
+import 'package:maid_service/core/constants/app_image_constant.dart';
+import 'package:maid_service/core/constants/app_static_strings.dart';
+import 'package:maid_service/core/constants/custom_space.dart';
+import 'package:maid_service/core/constants/fontsize_constant.dart';
+import 'package:maid_service/core/constants/padding_constant.dart';
+import 'package:maid_service/core/constants/text_style_constant.dart';
+
+class HelperFunction {
+  static void showSignInDialog(BuildContext context) {
+    showModalBottomSheet(
+      enableDrag: true,
+      constraints: BoxConstraints.tightForFinite(
+        /*height: MediaQuery.of(context).size.height / 2,*/
+        width: MediaQuery.of(context).size.width,
+      ),
+      context: context,
+      isScrollControlled: true,  // Allows full-screen height if needed
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) {
+        return SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: padding16,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 12.h,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  text: AppStaticString.signInButton,
+                  style: poppinsSemiBold,
+                  fontSize: getButtonFontSizeLarge(context),
+                ),
+                CustomText(
+                  text: AppStaticString.signInMsg,
+                  style: poppinsRegular,
+                  color: AppColors.kSubTextColor,
+                  fontSize: getFontSizeSemiSmall(context),
+                ),
+                space16H,
+
+                ///==================== social media login ===========================///
+
+                CustomButton(
+                  onTap: () {},
+                  img: appleIcon,
+                  fillColor: Colors.transparent,
+                  borderColor: AppColors.kGreyBorderColor,
+                  child: Row(
+                    spacing: 12.w,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        appleIcon,
+                        height: 23.w,
+                      ),
+                      CustomText(
+                        text: AppStaticString.continueAppleButton,
+                        style: poppinsSemiBold,
+                        fontSize: getFontSizeLarge(context),
+                      )
+                    ],
+                  ),
+                ),
+                CustomButton(
+                  onTap: () {},
+                  img: appleIcon,
+                  fillColor: Colors.transparent,
+                  borderColor: AppColors.kGreyBorderColor,
+                  child: Row(
+                    spacing: 12.w,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        goggleIcon,
+                        height: 23.w,
+                      ),
+                      CustomText(
+                        text: AppStaticString.continueGoogleButton,
+                        style: poppinsSemiBold,
+                        fontSize: getFontSizeLarge(context),
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 1.5,
+                        color: AppColors.kGreyBorderColor,
+                      ),
+                    ),
+                    Padding(
+                      padding: padding12H,
+                      child: CustomText(
+                        text: AppStaticString.or,
+                        style: poppinsSemiBold,
+                        fontSize: getFontSizeLarge(context),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 1.5,
+                        color: AppColors.kGreyBorderColor,
+                      ),
+                    ),
+                  ],
+                ),
+
+                ///====================== sign in email=================///
+
+                CustomButton(
+                  onTap: () {},
+                  title: AppStaticString.signInWithEmail,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: AppStaticString.donotHaveAccButton,
+                      style: poppinsRegular,
+                      fontSize: getFontSizeSemiSmall(context),
+                    ),
+                    CustomTextButton(text: AppStaticString.signUpButton,
+                        onPressed: () {
+
+                        },)
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

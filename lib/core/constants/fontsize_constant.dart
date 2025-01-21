@@ -6,7 +6,7 @@ double getFontSizeSmall(BuildContext context) =>
     MediaQuery.of(context).size.width >= 1300 ? 15.sp : 12.sp;
 
 double getFontSizeSemiSmall(BuildContext context) =>
-    MediaQuery.of(context).size.width >= 1300 ? 15.sp : 13.sp;
+    MediaQuery.of(context).size.width >= 1300 ? 16.sp : 14.sp;
 
 double getFontSizeDefault(BuildContext context) =>
     MediaQuery.of(context).size.width >= 1300 ? 17.sp : 14.sp;
