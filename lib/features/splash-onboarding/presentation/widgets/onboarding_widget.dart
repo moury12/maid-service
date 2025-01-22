@@ -11,13 +11,14 @@ class OnboardingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return  Container(
+/*
+      padding: padding16,
+*/
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(backgroundImg), fit: BoxFit.fitWidth)),
         child: child,
-      ),
-    );
+      );
   }
 }

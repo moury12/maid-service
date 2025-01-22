@@ -9,6 +9,7 @@ import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/core/enum/otp_enum.dart';
 import 'package:maid_service/features/auth/presentation/pages/enter_personal_info_page.dart';
+import 'package:maid_service/features/auth/presentation/pages/set_new_password.dart';
 import 'package:maid_service/features/auth/presentation/widgets/auth_page_structure_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -22,7 +23,10 @@ class OtpPage extends StatelessWidget {
     return AuthPageStructureWidget(
       function: () {
        if (otpEnum == OtpEnum.verify){
+         Navigator.pushNamed(context, SetNewPasswordPage.routeName);
 
+       }else{
+         Navigator.pushNamed(context, EnterPersonalInfoPage.routeName);
        }
       },
       child: Column(

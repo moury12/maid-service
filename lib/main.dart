@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MultiBlocProvider(
+        return/* MultiBlocProvider(
           providers: [...AppBlocProvides.getAllBlocProviders],
-          child: MaterialApp(
+          child:*/ MaterialApp(
             title: 'Maid Service App',
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.light,
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme, // Optional dark theme
             initialRoute: SplashPage.routeName,
             routes: AppRoutes.routes,
-          ),
+          /*),*/
         );
       },
     );
