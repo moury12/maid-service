@@ -28,9 +28,9 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: textAlign ?? TextAlign.start,
+     /* textAlign: textAlign ?? TextAlign.start,*/
       maxLines: maxLines,
-      overflow: overflow ?? TextOverflow.ellipsis,
+      /*overflow: overflow ?? TextOverflow.ellipsis,*/
       style: style?.copyWith(
         color: color ?? style?.color,
         fontSize: fontSize ?? style?.fontSize,
@@ -38,7 +38,7 @@ class CustomText extends StatelessWidget {
       ) ??
           TextStyle(
             color: color ?? AppColors.kTextColor,
-            fontSize: fontSize ?? getFontSizeSmall(context),
+            fontSize: fontSize ?? getFontSizeSemiSmall(context),
             fontWeight: fontWeight ?? FontWeight.normal,
           ),
     );

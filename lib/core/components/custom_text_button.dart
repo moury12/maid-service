@@ -10,6 +10,7 @@ class CustomTextButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final double? fontSize;
+  final FontWeight? fontWeight;
   final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry borderRadius;
 
@@ -21,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
     this.textColor,
     this.fontSize,
     this.padding,
-    this.borderRadius = const BorderRadius.all(Radius.circular(10)),
+    this.borderRadius = const BorderRadius.all(Radius.circular(10)), this.fontWeight,
   });
 
   @override
@@ -42,8 +43,9 @@ class CustomTextButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: fontSize ?? getFontSizeLarge(context),
-          fontWeight: FontWeight.w600,
+          fontSize: fontSize ?? getFontSizeSemiSmall(context),
+          fontFamily: 'Poppins',
+          fontWeight:fontWeight?? FontWeight.w600,
         ),
       ),
     );

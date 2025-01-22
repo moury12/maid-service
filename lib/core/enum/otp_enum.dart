@@ -1,0 +1,1 @@
+enum OtpEnum { verify, signIn }

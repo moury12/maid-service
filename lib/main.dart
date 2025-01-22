@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:maid_service/core/constants/app_routes.dart';
+import 'package:maid_service/core/routes/app_routes.dart';
 import 'package:maid_service/core/constants/bloc_provides.dart';
 import 'package:maid_service/core/theme/app_theme.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/splash_page.dart';

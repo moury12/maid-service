@@ -10,6 +10,8 @@ import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/features/auth/presentation/pages/login_page.dart';
+import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart';
 
 class HelperFunction {
   static void showSignInDialog(BuildContext context) {
@@ -20,7 +22,7 @@ class HelperFunction {
         width: MediaQuery.of(context).size.width,
       ),
       context: context,
-      isScrollControlled: true,  // Allows full-screen height if needed
+      isScrollControlled: true, // Allows full-screen height if needed
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
@@ -121,7 +123,9 @@ class HelperFunction {
                 ///====================== sign in email=================///
 
                 CustomButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, LoginPage.routeName);
+                  },
                   title: AppStaticString.signInWithEmail,
                 ),
                 Row(
@@ -132,10 +136,12 @@ class HelperFunction {
                       style: poppinsRegular,
                       fontSize: getFontSizeSemiSmall(context),
                     ),
-                    CustomTextButton(text: AppStaticString.signUpButton,
-                        onPressed: () {
-
-                        },)
+                    CustomTextButton(
+                      text: AppStaticString.signUpButton,
+                      onPressed: () {
+                        Navigator.pushNamed(context, SignUpPage.routeName);
+                      },
+                    )
                   ],
                 )
               ],
