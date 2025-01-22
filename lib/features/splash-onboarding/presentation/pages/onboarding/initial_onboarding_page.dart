@@ -62,56 +62,58 @@ class _InitialOnboardingPageState extends State<InitialOnboardingPage> {
                 ),
                 space8H,
                 Expanded(
-                    child: Padding(
-                  padding: padding16H,
-                  child: Image.asset(
-                    onboardingData[index]["image"],
-                    height: 400.h,
-                  ),
-                )),
-                Expanded(
-                    child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(color: AppColors.kWhiteColor),
-                  child: Padding(
-                    padding: padding16,
-                    child: Column(
-                      spacing: 12.h,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        onboardingData[index]["title"],
-                        BlocBuilder<OnBoardingBloc, OnBoardingState>(
-                         bloc: onBoardingBloc,
-                          builder: (context, state) {
-                             int currentIndex =0;
-                            if(state is OnBoardingInitial){
-                              currentIndex=state.currentIndex;
-                            } if(state is OnBoardingChangeState){
-                              currentIndex=state.currentIndex;
-                            }
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                onboardingData.length,
-                                (index) => buildDot(index, currentIndex),
-                              ),
-                            );
-                          },
-                        ),
-                        CustomButton(
-                          onTap: () {
-                            _pageController.nextPage(
-                              duration: Duration(milliseconds: 300),
-                              curve: Curves.ease,
-                            );
-                          },
-                          title: AppStaticString.continueButton,
-                        ),
-                      ],
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                                        padding: padding16H,
+                                        child: Image.asset(
+                      onboardingData[index]["image"],
+                      height: 400.h,
+                                        ),
+                                      ),
+                    )),
+                Container(
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(color: AppColors.kWhiteColor),
+                                  child: Padding(
+                padding: padding16,
+                child: Column(
+                  spacing: 12.h,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    onboardingData[index]["title"],
+                    BlocBuilder<OnBoardingBloc, OnBoardingState>(
+                     bloc: onBoardingBloc,
+                      builder: (context, state) {
+                         int currentIndex =0;
+                        if(state is OnBoardingInitial){
+                          currentIndex=state.currentIndex;
+                        } if(state is OnBoardingChangeState){
+                          currentIndex=state.currentIndex;
+                        }
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                            onboardingData.length,
+                            (index) => buildDot(index, currentIndex),
+                          ),
+                        );
+                      },
                     ),
-                  ),
-                ))
+                    CustomButton(
+                      onTap: () {
+                        _pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
+                      },
+                      title: AppStaticString.continueButton,
+                    ),
+                  ],
+                ),
+                                  ),
+                                )
               ],
             ),
           );
