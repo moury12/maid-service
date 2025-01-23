@@ -22,7 +22,7 @@ class OtpPage extends StatelessWidget {
     final OtpEnum? otpEnum =ModalRoute.of(context)?.settings.arguments as OtpEnum;
     return AuthPageStructureWidget(
       function: () {
-       if (otpEnum == OtpEnum.verify){
+       if (otpEnum == OtpEnum.forgetPass){
          Navigator.pushNamed(context, SetNewPasswordPage.routeName);
 
        }else{

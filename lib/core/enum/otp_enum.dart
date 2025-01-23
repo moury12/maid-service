@@ -1,1 +1,1 @@
-enum OtpEnum { verify, signIn }
+enum OtpEnum { forgetPass, signIn }

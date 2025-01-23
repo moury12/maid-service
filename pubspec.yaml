@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^9.0.0
   device_preview: ^1.2.0
   pin_code_fields: ^8.0.1
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:

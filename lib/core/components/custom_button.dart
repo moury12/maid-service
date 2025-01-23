@@ -24,12 +24,13 @@ class CustomButton extends StatelessWidget {
         this.icon,
         this.fontSize,
         this.radius,
-        this.isLoading = false});
+        this.isLoading = false,  this.imgIconColor =AppColors.kWhiteColor});
 
   final double? height;
   final double? radius;
   final double width;
   final Color fillColor;
+  final Color imgIconColor;
   final Color borderColor;
   final bool? isLoading;
 
@@ -78,15 +79,20 @@ class CustomButton extends StatelessWidget {
                 img != null
                     ? Image.asset(
                   img ?? '',
-                  height: 24.w,
-                  width: 24.w,
+                  height: 16.w,
+                  width: 16.w,
+                  color: imgIconColor,
 
                 )
                     : icon != null
                     ? Icon(
                   icon,
                   size: 24.sp,
+                  color: imgIconColor,
                 )
+                    : const SizedBox.shrink(),
+                icon != null || img != null
+                    ? space8W
                     : const SizedBox.shrink(),
                 CustomText(
                     text: title,

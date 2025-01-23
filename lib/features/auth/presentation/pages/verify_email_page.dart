@@ -15,10 +15,12 @@ class VerifyEmailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final OtpEnum? otpEnum =ModalRoute.of(context)?.settings.arguments as OtpEnum;
+
     return AuthPageStructureWidget(
       buttonText: AppStaticString.send,
       function: () {
-Navigator.pushNamed(context,OtpPage.routeName, arguments: OtpEnum.verify );
+Navigator.pushNamed(context,OtpPage.routeName, arguments: otpEnum );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

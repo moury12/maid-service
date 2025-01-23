@@ -17,7 +17,9 @@ class SetNewPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AuthPageStructureWidget(
-      routeName: EnterHomeAddressInfoPage.routeName,
+     function: () {
+
+     },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 12.h,

@@ -28,7 +28,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-     /* textAlign: textAlign ?? TextAlign.start,*/
+     textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       /*overflow: overflow ?? TextOverflow.ellipsis,*/
       style: style?.copyWith(

@@ -14,6 +14,7 @@ class AppStaticString {
   static const String signInMsg = "Quality cleaning tailored to your needs.";
   static const String pleaseLoginToYourAcc = "Please log in to your account.";
   static const String welcomeBack = "Welcome Back";
+  static const String fromDeepCleaning = "From deep cleaning to quick tidy-ups, we’ve got you covered!";
   static const String weMayStore =
       "We may store and send a verification code to this Email.";
   static const String emailAddress = "Email Address";
@@ -35,6 +36,14 @@ class AppStaticString {
   static const String confirmPass = "Confirm password";
   static const String newConfirmPass = "New Confirm password";
   static const String or = "OR";
+  static const String home = "Home";
+  static const String booking = "Booking";
+  static const String search = "Search";
+  static const String notification = "Notification ";
+  static const String profile = "Profile";
+  static const String fullName = "Full name";
+  static const String phoneNumber = "phone Number ";
+  static const String confirmPassword = "Confirm Password";
   static const String fromDeepCleaningToQuick =
       "From deep cleaning to quick tidy-ups, we’ve got you covered!";
   static const String weNeedThisInformation =

@@ -6,10 +6,13 @@ import 'package:maid_service/core/components/custom_text_button.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
+import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/core/helpers/helper_function.dart';
+import 'package:maid_service/core/hive-boxes/hive_boxes.dart';
+import 'package:maid_service/core/utils/static_variables.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/onboarding/initial_onboarding_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/widgets/onboarding_widget.dart';
 
@@ -37,6 +40,7 @@ class SplashPage extends StatelessWidget {
                     Expanded(
                         flex: 2,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           spacing: 6.h,
                           children: [
                             Image.asset(
@@ -80,20 +84,28 @@ class SplashPage extends StatelessWidget {
                                         color: AppColors.kWhiteColor,
                                         fontSize: getFontSizeExtraExtraLarge(
                                             context)))),
+                            space12H,
                             CustomButton(
                               onTap: () {
-                                Navigator.pushNamed(
-                                    context, InitialOnboardingPage.routeName);
+                                if (HiveBoxes.getInitialPhase().isNotEmpty &&
+                                    HiveBoxes.getInitialPhase()
+                                            .get(isOnBoardingComplete) ==
+                                        true) {
+                                  HelperFunction.showSignInDialog(context);
+
+                                } else {
+                                  Navigator.pushNamed(
+                                      context, InitialOnboardingPage.routeName);
+                                }
                               },
-                              title: AppStaticString.continueButton,
+                              title: HiveBoxes.getInitialPhase().isNotEmpty &&
+                                      HiveBoxes.getInitialPhase()
+                                              .get(isOnBoardingComplete) ==
+                                          true
+                                  ? AppStaticString.signInButton
+                                  : AppStaticString.continueButton,
                             ),
-                            CustomTextButton(
-                              text: AppStaticString.signInButton,
-                              textColor: AppColors.kWhiteColor,
-                              onPressed: () {
-                                HelperFunction.showSignInDialog(context);
-                              },
-                            )
+                            space16H
                           ],
                         ))
                   ],

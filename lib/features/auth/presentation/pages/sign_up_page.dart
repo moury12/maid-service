@@ -13,7 +13,8 @@ import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/core/enum/otp_enum.dart';
-import 'package:maid_service/features/auth/presentation/pages/otp_page.dart';
+import 'package:maid_service/features/auth/presentation/pages/login_page.dart';
+import 'package:maid_service/features/auth/presentation/pages/verify_email_page.dart';
 
 class SignUpPage extends StatelessWidget {
   static const String routeName = '/sign-up';
@@ -45,13 +46,25 @@ class SignUpPage extends StatelessWidget {
                       color: AppColors.kSubTextColor,
                     ),
                     CustomTextField(
-                      title: AppStaticString.emailAddress,
-                      prefixIcon: Icon(
-                        CupertinoIcons.mail,
-                        color: AppColors.kSubTextColor,
-                      ),
+                      title: AppStaticString.fullName,
                     ),
-                    space12H,
+                    CustomTextField(
+                      title: AppStaticString.emailAddress,
+                    ),
+                    CustomTextField(
+                      title: AppStaticString.phoneNumber,
+                    ),
+                    CustomTextField(
+                      title: AppStaticString.password,
+                      isPassword: true,
+                      hintText: '******',
+                    ),
+                    CustomTextField(
+                      title: AppStaticString.confirmPass,
+                      isPassword: true,
+                      hintText: '******',
+                    ),
+                    space12H
                   ],
                 ),
               ),
@@ -62,7 +75,10 @@ class SignUpPage extends StatelessWidget {
 
                 CustomButton(
                   onTap: () {
-                    Navigator.pushNamed(context, OtpPage.routeName,arguments: OtpEnum.signIn);
+                    Navigator.pushNamed(context, VerifyEmailPage.routeName,
+                        arguments: OtpEnum.signIn);
+                    // Navigator.pushNamed(context, OtpPage.routeName,
+                    //     arguments: OtpEnum.signIn);
                   },
                   title: AppStaticString.continueButton,
                 ),
@@ -76,7 +92,10 @@ class SignUpPage extends StatelessWidget {
                     ),
                     CustomTextButton(
                       text: AppStaticString.signInButton,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context,
+                            LoginPage.routeName);
+                      },
                     )
                   ],
                 )

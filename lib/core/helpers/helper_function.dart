@@ -11,6 +11,7 @@ import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/auth/presentation/pages/login_page.dart';
+import 'package:maid_service/features/auth/presentation/pages/select_role_page.dart';
 import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart';
 
 class HelperFunction {
@@ -139,7 +140,7 @@ class HelperFunction {
                     CustomTextButton(
                       text: AppStaticString.signUpButton,
                       onPressed: () {
-                        Navigator.pushNamed(context, SignUpPage.routeName);
+                        Navigator.pushNamed(context, SelectRolePage.routeName);
                       },
                     )
                   ],

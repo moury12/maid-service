@@ -8,7 +8,8 @@ import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
-import 'package:maid_service/features/auth/presentation/bloc/login/login_bloc.dart';
+import 'package:maid_service/core/enum/otp_enum.dart';
+import 'package:maid_service/features/auth/bloc/login/login_bloc.dart';
 import 'package:maid_service/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:maid_service/features/auth/presentation/widgets/auth_page_structure_widget.dart';
 
@@ -23,7 +24,6 @@ class LoginPage extends StatelessWidget {
     return AuthPageStructureWidget(
       buttonText: AppStaticString.loginButton,
       function: () {
-Navigator.pushNamed(context, VerifyEmailPage.routeName);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +90,8 @@ Navigator.pushNamed(context, VerifyEmailPage.routeName);
                     fontWeight: FontWeight.w400,
                     fontSize: getFontSizeSmall(context),
                       onPressed: () {
-                        
+                        Navigator.pushNamed(context, VerifyEmailPage.routeName, arguments:OtpEnum.forgetPass);
+
                       },))
             ],
           ),

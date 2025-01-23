@@ -3,13 +3,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:maid_service/core/routes/app_routes.dart';
 import 'package:maid_service/core/constants/bloc_provides.dart';
 import 'package:maid_service/core/theme/app_theme.dart';
+import 'package:maid_service/core/utils/static_variables.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/bottom_navigation_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/splash_page.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox(initialPhase);
   runApp(
+
     DevicePreview(
       enabled: !kReleaseMode,
       builder: (context) => MyApp(), // Wrap your app
@@ -38,7 +45,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme, // Custom theme
             darkTheme: AppTheme.darkTheme, // Optional dark theme
-            initialRoute: SplashPage.routeName,
+            initialRoute: BottomNavigationPage.routeName,
             routes: AppRoutes.routes,
           /*),*/
         );

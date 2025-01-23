@@ -7,6 +7,7 @@ import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/features/auth/presentation/pages/login_page.dart';
 import 'package:maid_service/features/auth/presentation/widgets/auth_page_structure_widget.dart';
 
 class EnterHomeAddressInfoPage extends StatelessWidget {
@@ -16,7 +17,13 @@ class EnterHomeAddressInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AuthPageStructureWidget(
-        routeName: '',
+        function: () {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            LoginPage.routeName,
+            (route) => false,
+          );
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 12.h,

@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
+import 'package:maid_service/core/constants/fontsize_constant.dart';
+import 'package:maid_service/core/constants/text_style_constant.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      checkboxTheme: CheckboxThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
 
+        backgroundColor: AppColors.kWhiteColor,
+showUnselectedLabels: true, type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.kPrimaryColor,
+        unselectedItemColor: AppColors.kSubTextColor,
+        unselectedLabelStyle: poppinsRegular.copyWith(
+            color: AppColors.kSubTextColor, fontSize: 12.sp),
+        selectedLabelStyle: poppinsMedium.copyWith(
+            color: AppColors.kPrimaryColor, fontSize: 12.sp),
+      ),
+      checkboxTheme: CheckboxThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4), // Rounded corners
         ),
@@ -49,7 +61,7 @@ class AppTheme {
         backgroundColor: AppColors.kWhiteColor,
         foregroundColor: AppColors.kTextColor,
       ),
-      scaffoldBackgroundColor: AppColors.kWhiteColor,
+      scaffoldBackgroundColor: AppColors.kButtonBackgroundColor,
       textTheme: const TextTheme(
           /* bodyText1: TextStyle(fontSize: 16, color: Colors.black),
         bodyText2: TextStyle(fontSize: 14, color: Colors.black54),

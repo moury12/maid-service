@@ -7,8 +7,11 @@ import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
+import 'package:maid_service/core/hive-boxes/hive_boxes.dart';
 import 'package:maid_service/core/utils/static_json.dart';
-import 'package:maid_service/features/splash-onboarding/presentation/bloc/on-board/on_boarding_bloc.dart';
+import 'package:maid_service/core/utils/static_variables.dart';
+import 'package:maid_service/features/splash-onboarding/bloc/on-board/on_boarding_bloc.dart';
+import 'package:maid_service/features/splash-onboarding/presentation/pages/splash_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/widgets/onboarding_widget.dart';
 
 class InitialOnboardingPage extends StatefulWidget {
@@ -42,6 +45,15 @@ class _InitialOnboardingPageState extends State<InitialOnboardingPage> {
         controller: _pageController,
         onPageChanged: (value) {
           onBoardingBloc.add(ChangePageEvent(currentIndex: value));
+          if(value==(onboardingData.length-1)){
+            HiveBoxes.getInitialPhase().put(isOnBoardingComplete, true);
+            if(HiveBoxes.getInitialPhase().isNotEmpty &&
+                HiveBoxes.getInitialPhase()
+                    .get(isOnBoardingComplete) ==
+                    true){
+              Navigator.pushNamedAndRemoveUntil(context, SplashPage.routeName, (route) => false,);
+            }
+          }
         },
         itemCount: onboardingData.length,
         itemBuilder: (context, index) {
