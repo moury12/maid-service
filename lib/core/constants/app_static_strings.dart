@@ -9,12 +9,22 @@ class AppStaticString {
   static const String signUpButton = "Sign up";
   static const String loginButton = "Log In";
   static const String send = "Send";
+  static const String viewDetails = "View Details";
+  static const String viewAll = "View All";
+
+  ///=========================== Appbar text==========================///
+  static const String myLocation = "My Location";
+  static const String findTrustedMaids = "Find trusted maids in your area...";
+  static const String whatServiceDoYouWant = "What service do you want?";
+  static const String recommendMaids = "Recommended Maids";
+  static const String bookingHistory = "Booking History";
 
   ///========================== normal Text =============================///
   static const String signInMsg = "Quality cleaning tailored to your needs.";
   static const String pleaseLoginToYourAcc = "Please log in to your account.";
   static const String welcomeBack = "Welcome Back";
-  static const String fromDeepCleaning = "From deep cleaning to quick tidy-ups, we’ve got you covered!";
+  static const String fromDeepCleaning =
+      "From deep cleaning to quick tidy-ups, we’ve got you covered!";
   static const String weMayStore =
       "We may store and send a verification code to this Email.";
   static const String emailAddress = "Email Address";

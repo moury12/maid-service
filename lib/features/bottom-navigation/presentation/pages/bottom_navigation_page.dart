@@ -1,74 +1,182 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:maid_service/core/components/custom_appbar.dart';
+import 'package:maid_service/core/components/custom_text.dart';
+import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
+import 'package:maid_service/core/constants/fontsize_constant.dart';
+import 'package:maid_service/core/constants/padding_constant.dart';
+import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
 import 'package:maid_service/features/bottom-navigation/bloc/navigation/navigation_bloc.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/home_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/notification/notification_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/profile_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/search/search_page.dart';
 
-class BottomNavigationPage extends StatelessWidget {
+class BottomNavigationPage extends StatefulWidget {
   static const String routeName = '/nav';
 
   const BottomNavigationPage({super.key});
+
+  @override
+  _BottomNavigationPageState createState() => _BottomNavigationPageState();
+}
+
+class _BottomNavigationPageState extends State<BottomNavigationPage> {
+  late NavigationBloc _navigationBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigationBloc = NavigationBloc();
+  }
+
+  @override
+  void dispose() {
+    _navigationBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    NavigationBloc navigationBloc = NavigationBloc();
+    final List<Widget> pages = [
+      const HomePage(),
+      const BookingPage(),
+      const SearchPage(),
+      const NotificationPage(),
+      const ProfilePage(),
+    ];
 
-    return Scaffold(
-      bottomNavigationBar: BlocBuilder<NavigationBloc, NavigationState>(
-        bloc: navigationBloc,
-        builder: (context, state) {
-          int currentIndex = 0;
-          if (state is NavigationInitial) {
-            currentIndex = state.currentIndex;
-          }if (state is NavigationChangeState) {
-            currentIndex = state.currentIndex;
-          }
-          return BottomNavigationBar(currentIndex: currentIndex,
-              backgroundColor: AppColors.kWhiteColor,
-
-              onTap: (value) {
-                navigationBloc.add(ChangeNavEvent(currentIndex: value));
-              },
-              items: [
-            BottomNavigationBarItem(
-                icon: Image.asset(homeIcon,
-                    height: 20.w,
-                    color: currentIndex == 0
-                        ? AppColors.kPrimaryColor
-                        : AppColors.kSubTextColor),
-                label: AppStaticString.home),
-            BottomNavigationBarItem(
-                icon: Image.asset(calenderIcon,
-                    height: 20.w,
-                    color: currentIndex == 1
-                        ? AppColors.kPrimaryColor
-                        : AppColors.kSubTextColor),
-                label: AppStaticString.home),
-            BottomNavigationBarItem(
-                icon: Image.asset(searchIcon,
-                    height: 20.w,
-                    color: currentIndex == 2
-                        ? AppColors.kPrimaryColor
-                        : AppColors.kSubTextColor),
-                label: AppStaticString.home),
-            BottomNavigationBarItem(
-                icon: Image.asset(notificationIcon,
-                    height: 20.w,
-                    color: currentIndex == 3
-                        ? AppColors.kPrimaryColor
-                        : AppColors.kSubTextColor),
-                label: AppStaticString.home),
-            BottomNavigationBarItem(
-                icon: Image.asset(profileIcon,
-                    height: 20.w,
-                    color: currentIndex == 4
-                        ? AppColors.kPrimaryColor
-                        : AppColors.kSubTextColor),
-                label: AppStaticString.home),
-          ]);
-        },
+    final List<PreferredSizeWidget> appBars = [
+      CustomAppbar(
+        showLeading: false,
+        titleWidget: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Image.asset(locationIcon, height: 16.h),
+                SizedBox(width: 6.w),
+                CustomText(
+                  text: AppStaticString.myLocation,
+                  style: poppinsRegular,
+                  fontSize: getFontSizeSemiSmall(context),
+                ),
+              ],
+            ),
+            CustomText(
+              maxLines: 1,
+              text: 'New York, NY, USA',
+              style: poppinsMedium,
+              fontSize: getFontSizeExtraLarge(context),
+            ),
+          ],
+        ),
+        actionWidget: CircleButtonWidget(
+          img: locationIcon,
+          onPressed: () {},
+        ),
       ),
+      CustomAppbar(
+        title: AppStaticString.bookingHistory,
+        actionWidget: CircleButtonWidget(
+          img: crossIcon,
+          onPressed: () {},
+        ),
+      ),
+      CustomAppbar(
+        titleWidget: FocusScope(
+          child: CustomTextField(
+            fillColor: AppColors.kButtonBackgroundColor,
+            contentPadding: EdgeInsets.zero,
+            height: 50.h,
+          ),
+        ),
+      ),
+      CustomAppbar(
+        title: AppStaticString.notification,
+      ),
+      CustomAppbar(
+        title: AppStaticString.profile,
+        actionWidget: Container(
+          padding: padding4,
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColors.kPrimaryAccentColor,
+              ),
+              color: AppColors.kWhiteColor,
+              borderRadius: BorderRadius.circular(50.r)),
+          child: Row(
+            spacing: 6.w,
+            children: [
+              Image.asset(
+                mermaidIcon,
+                height: 24.w,
+              ),
+
+              ///======================== dynamic points===================///
+              CustomText(
+                text: '10000',
+                style: poppinsMedium,
+                fontSize: getFontSizeSmall(context),
+              )
+            ],
+          ),
+        ),
+      ),
+    ];
+
+    return BlocBuilder<NavigationBloc, NavigationState>(
+      bloc: _navigationBloc,
+      builder: (context, state) {
+        int currentIndex = 0;
+        if (state is NavigationChangeState) {
+          currentIndex = state.currentIndex;
+        }
+
+        return Scaffold(
+          appBar: appBars[currentIndex],
+          body: IndexedStack(index: currentIndex, children: pages),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: currentIndex,
+            onTap: (index) {
+              _navigationBloc.add(ChangeNavEvent(currentIndex: index));
+            },
+            items: [
+              _buildBottomNavItem(
+                  homeIcon, AppStaticString.home, currentIndex, 0),
+              _buildBottomNavItem(
+                  calenderIcon, AppStaticString.booking, currentIndex, 1),
+              _buildBottomNavItem(
+                  searchIcon, AppStaticString.search, currentIndex, 2),
+              _buildBottomNavItem(notificationIcon,
+                  AppStaticString.notification, currentIndex, 3),
+              _buildBottomNavItem(
+                  profileIcon, AppStaticString.profile, currentIndex, 4),
+            ],
+            backgroundColor: AppColors.kWhiteColor,
+          ),
+        );
+      },
+    );
+  }
+
+  BottomNavigationBarItem _buildBottomNavItem(
+      String icon, String label, int currentIndex, int index) {
+    return BottomNavigationBarItem(
+      icon: Image.asset(
+        icon,
+        height: 20.w,
+        color: currentIndex == index
+            ? AppColors.kPrimaryColor
+            : AppColors.kSubTextColor,
+      ),
+      label: label,
     );
   }
 }

@@ -21,6 +21,7 @@ String profileIcon = 'assets/icon/profile_icon.png';
 String searchIcon = 'assets/icon/search_icon.png';
 String sortIcon = 'assets/icon/sort_icon.png';
 String starIcon = 'assets/icon/star_icon.png';
+String crossIcon = 'assets/icon/cross_icon.png';
 String termsIcon = 'assets/icon/terms_condition.png';
 
 ///============================ dummy =========================///
