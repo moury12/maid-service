@@ -10,6 +10,8 @@ String findMaidIcon = 'assets/icon/find_maid.png';
 String galleryIcon = 'assets/icon/gallery_icon.png';
 String goggleIcon = 'assets/icon/goggle_icon.png';
 String helpIcon = 'assets/icon/help_icon.png';
+String workIcon = 'assets/icon/work_icon.png';
+String priceIcon = 'assets/icon/price_icon.png';
 String locationIcon = 'assets/icon/location_icon.png';
 String logoutIcon = 'assets/icon/logout_icon.png';
 String mermaidIcon = 'assets/icon/mermaid_icon.png';
@@ -27,6 +29,7 @@ String termsIcon = 'assets/icon/terms_condition.png';
 ///============================ dummy =========================///
 
 String dummyCatIcon = 'assets/dummy/cat_icon_1.png';
+String dummyUserIcon = 'assets/dummy/dummy-customer.jpg';
 
 ///============================ Images =========================///
 

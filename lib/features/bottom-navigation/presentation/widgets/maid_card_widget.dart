@@ -1,0 +1,146 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:maid_service/core/components/custom_button.dart';
+import 'package:maid_service/core/components/custom_container.dart';
+import 'package:maid_service/core/components/custom_network_image.dart';
+import 'package:maid_service/core/components/custom_text.dart';
+import 'package:maid_service/core/constants/app_colors.dart';
+import 'package:maid_service/core/constants/app_image_constant.dart';
+import 'package:maid_service/core/constants/app_static_strings.dart';
+import 'package:maid_service/core/constants/fontsize_constant.dart';
+import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
+class MaidCardWidget extends StatelessWidget {
+  const MaidCardWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 12.h,
+      children: [
+        Row(
+          spacing: 12.w,
+          children: [
+            ///===================== dynamic maid image ======================///
+
+            Stack(
+              children: [
+                CustomNetworkImage(
+                    boxShape: BoxShape.circle,
+                    imageUrl: '',
+                    height: 44.w,
+                    width: 44.w),
+                Positioned(
+                  bottom: 2,
+                  right: 2,
+                  child: Image.asset(
+                    activeSymbolIcon,
+                    height: 8.w,
+                  ),
+                )
+              ],
+            ),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ///===================== dynamic maid name ======================///
+
+                  CustomText(
+                    text: 'Jenny Wilson',
+                    style: poppinsSemiBold,
+                    fontSize: getFontSizeSemiSmall(context),
+                  ),
+
+                  ///===================== dynamic maid exprience ======================///
+                  CustomText(
+                    text: '5${AppStaticString.yearsOfExperience}',
+                    style: poppinsRegular,
+                    color: AppColors.kSubTextColor,
+                    fontSize: getFontSizeSmall(context),
+                  )
+                ],
+              ),
+            ),
+
+            ///===================== dynamic maid work ======================///
+
+            CustomContainer(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 12.w, vertical: 6.h),
+              backgroundColor:
+              AppColors.kGreenColor.withOpacity(.2),
+              widget: Row(
+                spacing: 6.w,
+                children: [
+                  Icon(
+                    CupertinoIcons.star,
+                    color: AppColors.kGreenTextColor,
+                    size: 15.sp,
+                  ),
+
+                  ///=========================dynamic rate ========================///
+                  CustomText(
+                    text: '5.0',
+                    style: poppinsMedium,
+                    fontSize: getFontSizeSmall(context),
+                    color: AppColors.kGreenTextColor,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            4,
+                (index) {
+              return CustomContainer(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 12.w, vertical: 6.h),
+                  widget: CustomText(
+                    text: index > 2 ? '02+ More' : 'Dusting',
+                    style: poppinsRegular,
+                    fontSize: getFontSizeSmall(context),
+                    color: AppColors.kSubTextColor,
+                  ));
+            },
+          ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: RichText(
+                  text: TextSpan(
+                      text: '\$20',
+                      style: poppinsSemiBold.copyWith(
+                          fontSize: getFontSizeExtraLarge(context),
+                          color: AppColors.kPrimaryColor),
+                      children: [
+                        TextSpan(
+                            text: ' /per hour',
+                            style: poppinsRegular.copyWith(
+                                fontSize: getFontSizeSmall(context),
+                                color: AppColors.kSubTextColor))
+                      ])),
+            ),
+            Expanded(
+              child: CustomButton(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 12.w, vertical: 10.h),
+                onTap: () {
+                  Navigator.pushNamed(context, MaidDetailsPage.routeName);
+                },
+                title: AppStaticString.viewDetails,
+              ),
+            )
+          ],
+        ),
+      ],
+    );
+  }
+}

@@ -18,11 +18,16 @@ class AppStaticString {
   static const String whatServiceDoYouWant = "What service do you want?";
   static const String recommendMaids = "Recommended Maids";
   static const String bookingHistory = "Booking History";
+  static const String allMaids = "All Maids";
+  static const String bookingDetails = "Booking Details";
+  static const String details = "Details";
 
   ///========================== normal Text =============================///
   static const String signInMsg = "Quality cleaning tailored to your needs.";
   static const String pleaseLoginToYourAcc = "Please log in to your account.";
   static const String welcomeBack = "Welcome Back";
+  static const String userBio = "User Bio";
+  static const String yearsOfExperience = " Years of Experience";
   static const String fromDeepCleaning =
       "From deep cleaning to quick tidy-ups, we’ve got you covered!";
   static const String weMayStore =
@@ -46,6 +51,23 @@ class AppStaticString {
   static const String confirmPass = "Confirm password";
   static const String newConfirmPass = "New Confirm password";
   static const String or = "OR";
+  static const String payNow = "Pay now";
+  static const String total = "Total ";
+  static const String inclVat = "(Incl. VAT)";
+  static const String choseYourService = "Chose Your Services";
+  static const String endTime = "End Time";
+  static const String confirmYourService = "Confirm Your Service";
+  static const String date = "Date";
+  static const String startTime = "Start Time";
+  static const String available = "Available";
+  static const String totalExperience = "Total Experience";
+  static const String ratings = "Ratings";
+  static const String serviceCharge = "Service charge";
+  static const String about = "About";
+  static const String services = "Services";
+  static const String reviews = "Reviews";
+  static const String bookNowFor = "Book Now for ";
+  static const String unavailable = "Unavailable";
   static const String home = "Home";
   static const String booking = "Booking";
   static const String search = "Search";

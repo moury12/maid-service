@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
         this.icon,
         this.fontSize,
         this.radius,
-        this.isLoading = false,  this.imgIconColor =AppColors.kWhiteColor});
+        this.isLoading = false,  this.imgIconColor =AppColors.kWhiteColor, this.padding});
 
   final double? height;
   final double? radius;
@@ -41,6 +41,7 @@ class CustomButton extends StatelessWidget {
   final String title;
   final Widget? child;
   final String? img;
+  final EdgeInsets? padding;
   final IconData? icon;
 
   final double marginVerticel;
@@ -60,7 +61,7 @@ class CustomButton extends StatelessWidget {
             vertical: marginVerticel, horizontal: marginHorizontal),
         alignment: Alignment.center,
         height: height,
-        padding: padding16V,
+        padding:padding?? padding16V,
         width: width,
         decoration: BoxDecoration(
             border: Border.all(color: borderColor,width: 1.5),

@@ -141,7 +141,9 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
 
         return Scaffold(
           appBar: appBars[currentIndex],
-          body: IndexedStack(index: currentIndex, children: pages),
+          body: SafeArea(
+            child: IndexedStack(index: currentIndex, children: pages),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentIndex,
             onTap: (index) {

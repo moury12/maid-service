@@ -18,7 +18,7 @@ class WhiteContainerWithShadowWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-                color: Color(0xff101828).withOpacity(.2),
+                color: Color(0xff101828).withOpacity(.1),
                 spreadRadius: 0,
                 blurRadius: 2)
           ]),

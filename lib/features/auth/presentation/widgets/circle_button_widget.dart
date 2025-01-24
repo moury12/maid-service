@@ -27,7 +27,7 @@ class CircleButtonWidget extends StatelessWidget {
             onPressed: onPressed,
             icon: img != null
                 ? Image.asset(img ?? '',height: 20.w,
-            width: 20.w,)
+            width: 20.w,color: AppColors.kTextColor,)
 
                 : Icon(
                     icon ?? CupertinoIcons.back,
