@@ -20,31 +20,18 @@ class HomePage extends StatelessWidget {
         child: Column(
           spacing: 16.h,
           children: [
-            CustomTextField(
+            /*CustomTextField(
               hintText: AppStaticString.findTrustedMaids,
               prefixIcon: Padding(
                 padding: padding12,
                 child: Image.asset(searchIcon, height: 20.w),
               ),
-            ),
+            ),*/
             HomeTitleWidget(
               viewAll: false,
               title: AppStaticString.whatServiceDoYouWant,
             ),
-            GridView.builder(
-              shrinkWrap: true,
-              primary: false,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                ///==================== category icon ======================///
-                return CategoryItemCard();
-              },
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 110.w,
-                  mainAxisSpacing: 8.w,
-                  crossAxisSpacing: 8.w),
-            ),
+            CategoryGrid(),
             HomeTitleWidget(
               ///===================== show list of maid screen ======================///
 
@@ -66,6 +53,32 @@ padding: EdgeInsets.zero,
           ],
         ),
       ),
+    );
+  }
+}
+
+class CategoryGrid extends StatelessWidget {
+  final double? maxCrossAxisExtent;
+  final Widget? item;
+  const CategoryGrid({
+    super.key, this.maxCrossAxisExtent, this.item,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      shrinkWrap: true,
+      primary: false,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        ///==================== category icon ======================///
+        return item?? CategoryItemCard();
+      },
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent:maxCrossAxisExtent?? 110.w,
+          mainAxisSpacing: 8.w,
+          crossAxisSpacing: 8.w),
     );
   }
 }

@@ -11,6 +11,7 @@ String galleryIcon = 'assets/icon/gallery_icon.png';
 String goggleIcon = 'assets/icon/goggle_icon.png';
 String helpIcon = 'assets/icon/help_icon.png';
 String workIcon = 'assets/icon/work_icon.png';
+String clockIcon = 'assets/icon/clock_icon.png';
 String priceIcon = 'assets/icon/price_icon.png';
 String locationIcon = 'assets/icon/location_icon.png';
 String logoutIcon = 'assets/icon/logout_icon.png';

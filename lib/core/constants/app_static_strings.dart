@@ -27,6 +27,7 @@ class AppStaticString {
   static const String pleaseLoginToYourAcc = "Please log in to your account.";
   static const String welcomeBack = "Welcome Back";
   static const String userBio = "User Bio";
+  static const String welcomeToMermaids = "Welcome to Mermaids";
   static const String yearsOfExperience = " Years of Experience";
   static const String fromDeepCleaning =
       "From deep cleaning to quick tidy-ups, we’ve got you covered!";

@@ -20,79 +20,9 @@ class MaidCardWidget extends StatelessWidget {
     return Column(
       spacing: 12.h,
       children: [
-        Row(
-          spacing: 12.w,
-          children: [
-            ///===================== dynamic maid image ======================///
-
-            Stack(
-              children: [
-                CustomNetworkImage(
-                    boxShape: BoxShape.circle,
-                    imageUrl: '',
-                    height: 44.w,
-                    width: 44.w),
-                Positioned(
-                  bottom: 2,
-                  right: 2,
-                  child: Image.asset(
-                    activeSymbolIcon,
-                    height: 8.w,
-                  ),
-                )
-              ],
-            ),
-
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ///===================== dynamic maid name ======================///
-
-                  CustomText(
-                    text: 'Jenny Wilson',
-                    style: poppinsSemiBold,
-                    fontSize: getFontSizeSemiSmall(context),
-                  ),
-
-                  ///===================== dynamic maid exprience ======================///
-                  CustomText(
-                    text: '5${AppStaticString.yearsOfExperience}',
-                    style: poppinsRegular,
-                    color: AppColors.kSubTextColor,
-                    fontSize: getFontSizeSmall(context),
-                  )
-                ],
-              ),
-            ),
-
-            ///===================== dynamic maid work ======================///
-
-            CustomContainer(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 12.w, vertical: 6.h),
-              backgroundColor:
-              AppColors.kGreenColor.withOpacity(.2),
-              widget: Row(
-                spacing: 6.w,
-                children: [
-                  Icon(
-                    CupertinoIcons.star,
-                    color: AppColors.kGreenTextColor,
-                    size: 15.sp,
-                  ),
-
-                  ///=========================dynamic rate ========================///
-                  CustomText(
-                    text: '5.0',
-                    style: poppinsMedium,
-                    fontSize: getFontSizeSmall(context),
-                    color: AppColors.kGreenTextColor,
-                  )
-                ],
-              ),
-            )
-          ],
+        ProfilePicNameWithSubtitle(
+          showRating: true,
+          showAvailability: true,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,6 +70,100 @@ class MaidCardWidget extends StatelessWidget {
             )
           ],
         ),
+      ],
+    );
+  }
+}
+
+class ProfilePicNameWithSubtitle extends StatelessWidget {
+ final String? profilePic;
+ final bool? showAvailability;
+ final bool? showRating;
+ final String? profileName;
+ final String? profileSubText;
+ final Color? subTextColor;
+
+  const ProfilePicNameWithSubtitle({
+    super.key,
+    this.showRating=false,
+    this.profilePic, this.profileName, this.profileSubText, this.subTextColor, this.showAvailability=false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 12.w,
+      children: [
+        ///===================== dynamic maid image ======================///
+
+        Stack(
+          children: [
+            CustomNetworkImage(
+                boxShape: BoxShape.circle,
+                imageErrorUrl: profilePic,
+                imageUrl: profilePic??'',
+                height: 44.w,
+                width: 44.w),
+         showAvailability==true?   Positioned(
+              bottom: 2,
+              right: 2,
+              child: Image.asset(
+                activeSymbolIcon,
+                height: 8.w,
+              ),
+            ):SizedBox.shrink()
+          ],
+        ),
+
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ///===================== dynamic maid name ======================///
+
+              CustomText(
+                text: profileName??'Jenny Wilson',
+                style: poppinsSemiBold,
+                fontSize: getFontSizeSemiSmall(context),
+              ),
+
+              ///===================== dynamic maid exprience ======================///
+              CustomText(
+                text: profileSubText??'5${AppStaticString.yearsOfExperience}',
+                style: poppinsRegular,
+                color:subTextColor?? AppColors.kSubTextColor,
+                fontSize: getFontSizeSmall(context),
+              )
+            ],
+          ),
+        ),
+
+        ///===================== dynamic maid work ======================///
+
+      showRating==true?  CustomContainer(
+          padding: EdgeInsets.symmetric(
+              horizontal: 12.w, vertical: 6.h),
+          backgroundColor:
+          AppColors.kGreenColor.withOpacity(.2),
+          widget: Row(
+            spacing: 6.w,
+            children: [
+              Icon(
+                CupertinoIcons.star,
+                color: AppColors.kGreenTextColor,
+                size: 15.sp,
+              ),
+
+              ///=========================dynamic rate ========================///
+              CustomText(
+                text: '5.0',
+                style: poppinsMedium,
+                fontSize: getFontSizeSmall(context),
+                color: AppColors.kGreenTextColor,
+              )
+            ],
+          ),
+        ):SizedBox.shrink()
       ],
     );
   }

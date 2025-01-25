@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/components/custom_appbar.dart';
-import 'package:maid_service/core/components/custom_text.dart';
 import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
-import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
-import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
 import 'package:maid_service/features/bottom-navigation/bloc/navigation/navigation_bloc.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_page.dart';
@@ -17,6 +14,8 @@ import 'package:maid_service/features/bottom-navigation/presentation/pages/home/
 import 'package:maid_service/features/bottom-navigation/presentation/pages/notification/notification_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/profile_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/search/search_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/widgets/coin_point_widget.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
 
 class BottomNavigationPage extends StatefulWidget {
   static const String routeName = '/nav';
@@ -55,32 +54,13 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     final List<PreferredSizeWidget> appBars = [
       CustomAppbar(
         showLeading: false,
-        titleWidget: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Image.asset(locationIcon, height: 16.h),
-                SizedBox(width: 6.w),
-                CustomText(
-                  text: AppStaticString.myLocation,
-                  style: poppinsRegular,
-                  fontSize: getFontSizeSemiSmall(context),
-                ),
-              ],
-            ),
-            CustomText(
-              maxLines: 1,
-              text: 'New York, NY, USA',
-              style: poppinsMedium,
-              fontSize: getFontSizeExtraLarge(context),
-            ),
-          ],
+        titleWidget: ProfilePicNameWithSubtitle(
+          showAvailability: false,
+          showRating: false,
+          profileSubText: AppStaticString.welcomeToMermaids,
+          subTextColor: AppColors.kTextColor,
         ),
-        actionWidget: CircleButtonWidget(
-          img: locationIcon,
-          onPressed: () {},
-        ),
+
       ),
       CustomAppbar(
         title: AppStaticString.bookingHistory,
@@ -103,31 +83,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
       ),
       CustomAppbar(
         title: AppStaticString.profile,
-        actionWidget: Container(
-          padding: padding4,
-          decoration: BoxDecoration(
-              border: Border.all(
-                color: AppColors.kPrimaryAccentColor,
-              ),
-              color: AppColors.kWhiteColor,
-              borderRadius: BorderRadius.circular(50.r)),
-          child: Row(
-            spacing: 6.w,
-            children: [
-              Image.asset(
-                mermaidIcon,
-                height: 24.w,
-              ),
-
-              ///======================== dynamic points===================///
-              CustomText(
-                text: '10000',
-                style: poppinsMedium,
-                fontSize: getFontSizeSmall(context),
-              )
-            ],
-          ),
-        ),
+        actionWidget: CoinPointWidget(),
       ),
     ];
 
@@ -182,3 +138,5 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     );
   }
 }
+
+
