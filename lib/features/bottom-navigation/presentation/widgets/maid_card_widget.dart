@@ -10,6 +10,7 @@ import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
+
 class MaidCardWidget extends StatelessWidget {
   const MaidCardWidget({
     super.key,
@@ -28,10 +29,12 @@ class MaidCardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(
             4,
-                (index) {
+            (index) {
+              ///===================== dynamic maid work ======================///
+
               return CustomContainer(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 12.w, vertical: 6.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                   widget: CustomText(
                     text: index > 2 ? '02+ More' : 'Dusting',
                     style: poppinsRegular,
@@ -51,17 +54,16 @@ class MaidCardWidget extends StatelessWidget {
                           fontSize: getFontSizeExtraLarge(context),
                           color: AppColors.kPrimaryColor),
                       children: [
-                        TextSpan(
-                            text: ' /per hour',
-                            style: poppinsRegular.copyWith(
-                                fontSize: getFontSizeSmall(context),
-                                color: AppColors.kSubTextColor))
-                      ])),
+                    TextSpan(
+                        text: ' /per hour',
+                        style: poppinsRegular.copyWith(
+                            fontSize: getFontSizeSmall(context),
+                            color: AppColors.kSubTextColor))
+                  ])),
             ),
             Expanded(
               child: CustomButton(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 12.w, vertical: 10.h),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
                 onTap: () {
                   Navigator.pushNamed(context, MaidDetailsPage.routeName);
                 },
@@ -76,17 +78,21 @@ class MaidCardWidget extends StatelessWidget {
 }
 
 class ProfilePicNameWithSubtitle extends StatelessWidget {
- final String? profilePic;
- final bool? showAvailability;
- final bool? showRating;
- final String? profileName;
- final String? profileSubText;
- final Color? subTextColor;
+  final String? profilePic;
+  final bool? showAvailability;
+  final bool? showRating;
+  final String? profileName;
+  final String? profileSubText;
+  final Color? subTextColor;
 
   const ProfilePicNameWithSubtitle({
     super.key,
-    this.showRating=false,
-    this.profilePic, this.profileName, this.profileSubText, this.subTextColor, this.showAvailability=false,
+    this.showRating = false,
+    this.profilePic,
+    this.profileName,
+    this.profileSubText,
+    this.subTextColor,
+    this.showAvailability = false,
   });
 
   @override
@@ -101,17 +107,19 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
             CustomNetworkImage(
                 boxShape: BoxShape.circle,
                 imageErrorUrl: profilePic,
-                imageUrl: profilePic??'',
+                imageUrl: profilePic ?? '',
                 height: 44.w,
                 width: 44.w),
-         showAvailability==true?   Positioned(
-              bottom: 2,
-              right: 2,
-              child: Image.asset(
-                activeSymbolIcon,
-                height: 8.w,
-              ),
-            ):SizedBox.shrink()
+            showAvailability == true
+                ? Positioned(
+                    bottom: 2,
+                    right: 2,
+                    child: Image.asset(
+                      activeSymbolIcon,
+                      height: 8.w,
+                    ),
+                  )
+                : SizedBox.shrink()
           ],
         ),
 
@@ -122,49 +130,71 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
               ///===================== dynamic maid name ======================///
 
               CustomText(
-                text: profileName??'Jenny Wilson',
+                text: profileName ?? 'Jenny Wilson',
                 style: poppinsSemiBold,
                 fontSize: getFontSizeSemiSmall(context),
               ),
 
               ///===================== dynamic maid exprience ======================///
               CustomText(
-                text: profileSubText??'5${AppStaticString.yearsOfExperience}',
+                text: profileSubText ?? '5${AppStaticString.yearsOfExperience}',
                 style: poppinsRegular,
-                color:subTextColor?? AppColors.kSubTextColor,
+                color: subTextColor ?? AppColors.kSubTextColor,
                 fontSize: getFontSizeSmall(context),
               )
             ],
           ),
         ),
 
-        ///===================== dynamic maid work ======================///
+        ///=========================dynamic rate ========================///
 
-      showRating==true?  CustomContainer(
-          padding: EdgeInsets.symmetric(
-              horizontal: 12.w, vertical: 6.h),
-          backgroundColor:
-          AppColors.kGreenColor.withOpacity(.2),
-          widget: Row(
-            spacing: 6.w,
-            children: [
-              Icon(
-                CupertinoIcons.star,
-                color: AppColors.kGreenTextColor,
-                size: 15.sp,
-              ),
-
-              ///=========================dynamic rate ========================///
-              CustomText(
-                text: '5.0',
-                style: poppinsMedium,
-                fontSize: getFontSizeSmall(context),
-                color: AppColors.kGreenTextColor,
+        showRating == true
+            ? RatingValueContainerWidget(
+                ratingValue: '0.5',
               )
-            ],
-          ),
-        ):SizedBox.shrink()
+            : SizedBox.shrink()
       ],
+    );
+  }
+}
+
+class RatingValueContainerWidget extends StatelessWidget {
+  final String? ratingValue;
+  final Color? color;
+  final Widget? child;
+  final Function()? function;
+  const RatingValueContainerWidget({
+    super.key,
+     this.ratingValue,
+    this.color, this.child, this.function,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap:function?? () {
+
+      },
+      child: CustomContainer(
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+        backgroundColor: color ?? AppColors.kGreenColor.withOpacity(.2),
+        widget:child?? Row(
+          spacing: 6.w,
+          children: [
+            Icon(
+              CupertinoIcons.star,
+              color: AppColors.kGreenTextColor,
+              size: 15.sp,
+            ),
+            CustomText(
+              text: ratingValue??'0',
+              style: poppinsMedium,
+              fontSize: getFontSizeSmall(context),
+              color: AppColors.kGreenTextColor,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

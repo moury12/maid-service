@@ -4,6 +4,8 @@ import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_grid_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_item_card_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
@@ -18,7 +20,7 @@ class HomePage extends StatelessWidget {
       child: Padding(
         padding: padding16,
         child: Column(
-          spacing: 16.h,
+          spacing: 12.h,
           children: [
             /*CustomTextField(
               hintText: AppStaticString.findTrustedMaids,
@@ -35,15 +37,17 @@ class HomePage extends StatelessWidget {
             HomeTitleWidget(
               ///===================== show list of maid screen ======================///
 
-              function: () {},
+              function: () {
+                Navigator.pushNamed(context, AllMaidListPage.routeName);
+              },
               title: AppStaticString.recommendMaids,
             ),
             ListView.builder(
-padding: EdgeInsets.zero,
+              padding: EdgeInsets.zero,
               shrinkWrap: true,
               primary: false,
               itemBuilder: (context, index) => Padding(
-                padding: padding6V,
+                padding: padding12V.copyWith(top: 0),
                 child: WhiteContainerWithShadowWidget(
                   child: MaidCardWidget(),
                 ),
@@ -56,30 +60,3 @@ padding: EdgeInsets.zero,
     );
   }
 }
-
-class CategoryGrid extends StatelessWidget {
-  final double? maxCrossAxisExtent;
-  final Widget? item;
-  const CategoryGrid({
-    super.key, this.maxCrossAxisExtent, this.item,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      primary: false,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        ///==================== category icon ======================///
-        return item?? CategoryItemCard();
-      },
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent:maxCrossAxisExtent?? 110.w,
-          mainAxisSpacing: 8.w,
-          crossAxisSpacing: 8.w),
-    );
-  }
-}
-

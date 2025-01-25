@@ -15,6 +15,7 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/home_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_grid_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/custom_divider.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/image_with_title_content_widget.dart';

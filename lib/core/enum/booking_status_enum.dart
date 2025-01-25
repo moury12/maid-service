@@ -1,0 +1,1 @@
+enum BookingStatusEnum{ ongoing, pending, completed }

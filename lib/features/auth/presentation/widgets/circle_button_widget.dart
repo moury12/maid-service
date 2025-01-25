@@ -5,13 +5,15 @@ import 'package:maid_service/core/constants/app_colors.dart';
 
 class CircleButtonWidget extends StatelessWidget {
   final IconData? icon;
+  final double? iconSize;
+  final EdgeInsets? padding;
   final String? img;
   final Function()? onPressed;
   const CircleButtonWidget({
     super.key,
     this.icon,
     this.onPressed,
-    this.img,
+    this.img, this.iconSize, this.padding,
   });
 
   @override
@@ -32,7 +34,7 @@ class CircleButtonWidget extends StatelessWidget {
                 : Icon(
                     icon ?? CupertinoIcons.back,
                     color: AppColors.kTextColor,
-                    size: 30.sp,
+                    size:iconSize?? 30.sp,
                   )));
   }
 }

@@ -7,24 +7,28 @@ import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/white_container_with_shadow_widget.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/custom_divider.dart';
+
 class CustomContainerWithBorder extends StatelessWidget {
   final Widget child;
   final Function()? function;
   const CustomContainerWithBorder({
     super.key,
-    required this.child, this.function,
+    required this.child,
+    this.function,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: function??(){},
-      child: CustomContainer(
-        borderWidth: 2,
-        borderColor: AppColors.kButtonBackgroundColor,
-        radius: 12.r,
-        backgroundColor: AppColors.kWhiteColor,
-        widget: child,
+    return CustomContainer(
+      borderWidth: 2,
+      borderColor: AppColors.kButtonBackgroundColor,
+      radius: 12.r,
+      backgroundColor: AppColors.kWhiteColor,
+      widget: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashColor: AppColors.kButtonBackgroundColor,
+            onTap: function ?? () {}, child: child),
       ),
     );
   }
@@ -56,7 +60,7 @@ class MaidDetailsTabContent extends StatelessWidget {
           child ??
               CustomText(
                 text:
-                'Hi, I’m Jenny Wilson, a professional home cleaner with over 3 years of experience in delivering top-notch cleaning services. I specialize in handling all types of furniture, flooring, and even swimming pools, ensuring every surface sparkles and shines. From stubborn stains on carpets to cluttered spaces that need organizing, I take care of it all with attention to detail and a commitment to quality. My goal is to provide 100% satisfaction, making your home clean, fresh, and inviting. Let me handle the mess so you can enjoy a stress-free, spotless space!',
+                    'Hi, I’m Jenny Wilson, a professional home cleaner with over 3 years of experience in delivering top-notch cleaning services. I specialize in handling all types of furniture, flooring, and even swimming pools, ensuring every surface sparkles and shines. From stubborn stains on carpets to cluttered spaces that need organizing, I take care of it all with attention to detail and a commitment to quality. My goal is to provide 100% satisfaction, making your home clean, fresh, and inviting. Let me handle the mess so you can enjoy a stress-free, spotless space!',
                 style: poppinsRegular,
                 fontSize: getFontSizeSemiSmall(context),
                 color: AppColors.kSubTextColor,

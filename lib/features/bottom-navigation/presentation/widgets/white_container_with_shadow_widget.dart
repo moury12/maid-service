@@ -5,14 +5,15 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 
 class WhiteContainerWithShadowWidget extends StatelessWidget {
   final Widget? child;
+  final EdgeInsets? padding;
   const WhiteContainerWithShadowWidget({
-    super.key, this.child,
+    super.key, this.child, this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding12,
+      padding:padding?? padding12,
       decoration: BoxDecoration(
           color: AppColors.kWhiteColor,
           borderRadius: BorderRadius.circular(12.r),

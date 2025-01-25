@@ -7,6 +7,7 @@ import 'package:maid_service/core/constants/text_style_constant.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      splashColor: AppColors.kButtonBackgroundColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
 
         backgroundColor: AppColors.kWhiteColor,

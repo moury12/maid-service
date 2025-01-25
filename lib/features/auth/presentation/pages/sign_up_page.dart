@@ -23,6 +23,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.kWhiteColor,
       appBar: CustomAppbar(),
       body: Padding(
         padding: padding16,

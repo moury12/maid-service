@@ -12,6 +12,7 @@ import 'package:maid_service/core/enum/otp_enum.dart';
 import 'package:maid_service/features/auth/bloc/login/login_bloc.dart';
 import 'package:maid_service/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:maid_service/features/auth/presentation/widgets/auth_page_structure_widget.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/bottom_navigation_page.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routeName = '/login';
@@ -24,6 +25,7 @@ class LoginPage extends StatelessWidget {
     return AuthPageStructureWidget(
       buttonText: AppStaticString.loginButton,
       function: () {
+        Navigator.pushNamed(context, BottomNavigationPage.routeName);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

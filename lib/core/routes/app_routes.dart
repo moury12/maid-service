@@ -9,7 +9,13 @@ import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart'
 import 'package:maid_service/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
 import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_tracks_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_tracks_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/canceled_booking_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/canceled_booking_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/bottom_navigation_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
 import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
 import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/onboarding/initial_onboarding_page.dart';
@@ -26,8 +32,11 @@ class AppRoutes {
     BottomNavigationPage.routeName: (context) => BottomNavigationPage(),
     SelectRolePage.routeName: (context) => SelectRolePage(),
     VerifyEmailPage.routeName: (context) => VerifyEmailPage(),
+    AllMaidListPage.routeName: (context) => AllMaidListPage(),
     MaidDetailsPage.routeName: (context) => MaidDetailsPage(),
+    CanceledBookingPage.routeName: (context) => CanceledBookingPage(),
     BookingDetailsPage.routeName: (context) => BookingDetailsPage(),
+    BookingTrackPage.routeName: (context) => BookingTrackPage(),
     EnterPersonalInfoPage.routeName: (context) => EnterPersonalInfoPage(),
     EnterHomeAddressInfoPage.routeName: (context) => EnterHomeAddressInfoPage(),
   };

@@ -9,9 +9,10 @@ import 'package:maid_service/core/constants/text_style_constant.dart';
 class HomeTitleWidget extends StatelessWidget {
   final String title;
   final bool? viewAll;
+  final Widget? customButton;
   final Function()? function;
   const HomeTitleWidget(
-      {super.key, required this.title, this.viewAll=true, this.function});
+      {super.key, required this.title, this.viewAll=true, this.function, this.customButton});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class HomeTitleWidget extends StatelessWidget {
           ),
         ),
         viewAll == true
-            ? CustomTextButton(
+            ?customButton?? CustomTextButton(
                 padding: EdgeInsets.zero,
                 text: AppStaticString.viewAll,
                 onPressed: function ?? () {},

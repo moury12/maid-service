@@ -13,6 +13,7 @@ import 'package:maid_service/features/auth/presentation/widgets/circle_button_wi
 import 'package:maid_service/features/book-maid/presentation/widgets/confirm_service_content_widget.dart';
 import 'package:maid_service/features/book-maid/presentation/widgets/my_location_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/home_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_grid_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/coin_point_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/image_with_title_content_widget.dart';

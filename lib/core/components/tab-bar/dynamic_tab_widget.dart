@@ -5,6 +5,7 @@ import 'package:maid_service/core/components/tab-bar/tab_content_view.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
+import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 
 class DynamicTabWidget extends StatelessWidget {
@@ -22,15 +23,17 @@ class DynamicTabWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+
       length: tabs.length, // Dynamically set the number of tabs
       child: Column(
         children: [
           SizedBox(height: 16.h), // Add spacing above the tabs
           CustomContainer(
             backgroundColor: AppColors.kFadeWhiteColor,
-            padding: EdgeInsets.symmetric(vertical: 4.h),
-            widget: TabBar(
-              indicatorColor: Colors.transparent,
+            padding:padding8,
+            widget: TabBar(indicatorPadding: EdgeInsets.zero, padding: EdgeInsets.zero,
+              indicatorColor: Colors.transparent, labelPadding: EdgeInsets.zero,
+
               dividerColor: Colors.transparent,
               overlayColor: const WidgetStatePropertyAll<Color>(
                   AppColors.kButtonBackgroundColor),
@@ -40,7 +43,7 @@ class DynamicTabWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.r), // Rounded corners
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.15),
+                    color: Colors.black.withOpacity(0.2),
                     blurRadius: 4,
                     offset: Offset(0, 2), // Slight shadow for active tab
                   ),
@@ -69,9 +72,11 @@ class DynamicTabWidget extends StatelessWidget {
                                 Colors.transparent, // Default for inactive tabs
                             borderRadius: BorderRadius.circular(20.r),
                           ),
-                          child: Text(
-                            entry.value,
-                            textAlign: TextAlign.center,
+                          child: FittedBox(
+                            child: Text(
+                              entry.value,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ))

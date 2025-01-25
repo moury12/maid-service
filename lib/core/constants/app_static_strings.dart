@@ -9,6 +9,7 @@ class AppStaticString {
   static const String signUpButton = "Sign up";
   static const String loginButton = "Log In";
   static const String send = "Send";
+  static const String giveReview = "Give Review";
   static const String viewDetails = "View Details";
   static const String viewAll = "View All";
 
@@ -20,6 +21,7 @@ class AppStaticString {
   static const String bookingHistory = "Booking History";
   static const String allMaids = "All Maids";
   static const String bookingDetails = "Booking Details";
+  static const String bookingId = "Booking ID";
   static const String details = "Details";
 
   ///========================== normal Text =============================///
@@ -52,6 +54,28 @@ class AppStaticString {
   static const String confirmPass = "Confirm password";
   static const String newConfirmPass = "New Confirm password";
   static const String or = "OR";
+  static const String selectedServiceType = "Selected Service Type";
+  static const String serviceCategory = "Service Category";
+  static const String canceled = "Canceled";
+  static const String canceledBooking = "Canceled Booking";
+  static const String workLocation = "Work Location ";
+  static const String submit = "Submit";
+  static const String review = "Review";
+  static const String enterYourReview = "Enter your Review...";
+  static const String howWouldYouRate = "How would you rate this pro overall?";
+  static const String trackingUpdate = "Tracking Updates";
+  static const String ongoing = "Ongoing";
+  static const String pending = "Pending";
+  static const String completed = "Completed";
+  static const String generalCleaning = "General Cleaning";
+  static const String assignTo = "Assign To: ";
+  static const String assignToWithoutClone = "Assign To";
+  static const String working = "Working";
+  static const String jobStarted = "Job started";
+  static const String cleanerOnTheWay = "Cleaner on the way";
+  static const String cleanerAccepted = "Cleaner accepted";
+  static const String cleanerReq = "Cleaner requested";
+  static const String perHour = "per hour";
   static const String payNow = "Pay now";
   static const String total = "Total ";
   static const String inclVat = "(Incl. VAT)";
