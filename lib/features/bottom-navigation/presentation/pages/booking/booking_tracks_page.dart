@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/components/custom_appbar.dart';
 import 'package:maid_service/core/components/custom_network_image.dart';
@@ -12,8 +13,10 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/core/enum/booking_status_enum.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
+import 'package:maid_service/features/bottom-navigation/bloc/booking/time_line_bloc.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/widgets/time_line_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/white_container_with_shadow_widget.dart';
 
 class BookingTrackPage extends StatelessWidget {
@@ -22,7 +25,7 @@ class BookingTrackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     BookingStatusEnum? bookingStatusEnum =
+    BookingStatusEnum? bookingStatusEnum =
         ModalRoute.of(context)?.settings.arguments as BookingStatusEnum;
 
     return Scaffold(
@@ -103,16 +106,39 @@ class BookingTrackPage extends StatelessWidget {
               ),
               HomeTitleWidget(
                 title: AppStaticString.trackingUpdate,
-               viewAll: bookingStatusEnum==BookingStatusEnum.completed?true:false,
-               customButton: RatingValueContainerWidget(
-                ratingValue: AppStaticString.giveReview,
-                 function: () {
-
-                 },
+                viewAll: bookingStatusEnum == BookingStatusEnum.completed
+                    ? true
+                    : false,
+                customButton: RatingValueContainerWidget(
+                  ratingValue: AppStaticString.giveReview,
+                  function: () {},
+                ),
               ),
-              ),
-
-              WhiteContainerWithShadowWidget()
+              BlocProvider(
+                  create: (context) => TimeLineBloc()..add(LoadTimeline()),
+                  child: WhiteContainerWithShadowWidget(
+                    child: BlocBuilder<TimeLineBloc, TimelineState>(
+                        builder: (context, state) {
+                      if (state is TimelineInitial ||
+                          state is TimelineLoading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (state is TimelineLoaded) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          padding: const EdgeInsets.all(16.0),
+                          itemCount: state.entries.length,
+                          itemBuilder: (context, index) {
+                            return TimelineTile(
+                              entry: state.entries[index],
+                              isLast: index == state.entries.length - 1,
+                            );
+                          },
+                        );
+                      }
+                      return Container();
+                    }),
+                  ))
             ],
           ),
         ),
