@@ -10,7 +10,7 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
 import 'package:maid_service/features/bottom-navigation/bloc/navigation/navigation_bloc.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/canceled_booking_page.dart';
+import 'package:maid_service/features/booking-status/presentation/pages/canceled_booking_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/home_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/notification/notification_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/profile_page.dart';
@@ -57,7 +57,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
         showLeading: false,
         titleWidget: ProfilePicNameWithSubtitle(
           showAvailability: false,
-          showRating: false,
+          showTrailing: false,
           profileSubText: AppStaticString.welcomeToMermaids,
           subTextColor: AppColors.kTextColor,
         ),

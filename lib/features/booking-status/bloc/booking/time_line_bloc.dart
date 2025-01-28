@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:maid_service/features/bottom-navigation/data/model/TimeLineEntry.dart';
+import 'package:maid_service/features/booking-status/data/model/TimeLineEntry.dart';
 import 'package:meta/meta.dart';
 
 part 'time_line_event.dart';

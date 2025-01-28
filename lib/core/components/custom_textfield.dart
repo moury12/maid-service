@@ -42,11 +42,13 @@ class CustomTextField extends StatefulWidget {
       this.title,
       this.isEnable = true,
       this.height,
-      this.isRequired = false});
+      this.isRequired = false, this.borderRadius});
 
   final TextEditingController? textEditingController;
   final FocusNode? focusNode;
   final String? title;
+  final double? borderRadius;
+
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final Color cursorColor;
@@ -121,6 +123,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         SizedBox(
           height: widget.height, // Set the desired height here
           child: TextFormField(
+
             textAlign: widget.textAlign,
             onTap: widget.onTap,
             enabled: widget.isEnable,
@@ -174,9 +177,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     )
                   : widget.suffixIcon,
               suffixIconColor: widget.suffixIconColor,
-              border: widget.border,
-              focusedBorder: widget.focusedBorder,
-              enabledBorder: widget.enabledBorder,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? 50.r),
+                borderSide: const BorderSide(color: AppColors.kGreyBorderColor, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? 50.r),
+                borderSide: const BorderSide(color: AppColors.kGreyBorderColor, width: 1),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? 50.r),
+                borderSide: const BorderSide(color: AppColors.kGreyBorderColor, width: 1),
+              ),
             ),
           ),
         ),

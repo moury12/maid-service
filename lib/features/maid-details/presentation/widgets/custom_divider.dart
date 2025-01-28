@@ -22,14 +22,15 @@ class CustomHorizontalDivider extends StatelessWidget {
 }
 
 class CustomVerticalDivider extends StatelessWidget {
+  final EdgeInsets? padding;
   const CustomVerticalDivider({
-    super.key,
+    super.key, this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding12V,
+      padding:padding?? EdgeInsets.zero,
       child: Container(
         color: AppColors.kButtonBackgroundColor,
         height: 2.w,

@@ -28,6 +28,7 @@ class AppStaticString {
   static const String signInMsg = "Quality cleaning tailored to your needs.";
   static const String pleaseLoginToYourAcc = "Please log in to your account.";
   static const String welcomeBack = "Welcome Back";
+  static const String others = "Others";
   static const String userBio = "User Bio";
   static const String welcomeToMermaids = "Welcome to Mermaids";
   static const String yearsOfExperience = " Years of Experience";
@@ -54,6 +55,19 @@ class AppStaticString {
   static const String confirmPass = "Confirm password";
   static const String newConfirmPass = "New Confirm password";
   static const String or = "OR";
+  static const String writeReview = "Write Review";
+  static const String howWouldYouRate = "How would you rate this pro overall?";
+  static const String enterYourReview = "Enter your Review...";
+  static const String settings = "Settings";
+  static const String upgradeFrom = "Upgrade from ";
+  static const String getProMaids =
+      "Get Pro maids. Join the top 5% of our 500k+ pros";
+  static const String paymentMethods = "Payment Methods";
+  static const String termsAndCondition = "Terms & Condition";
+  static const String privacyPolicy = "Privacy policy";
+  static const String helpSupport = "Help/Support";
+  static const String logOut = "Log Out";
+  static const String mermaidsPremium = "Mermaids Premium";
   static const String selectedServiceType = "Selected Service Type";
   static const String serviceCategory = "Service Category";
   static const String canceled = "Canceled";
@@ -61,8 +75,7 @@ class AppStaticString {
   static const String workLocation = "Work Location ";
   static const String submit = "Submit";
   static const String review = "Review";
-  static const String enterYourReview = "Enter your Review...";
-  static const String howWouldYouRate = "How would you rate this pro overall?";
+
   static const String trackingUpdate = "Tracking Updates";
   static const String ongoing = "Ongoing";
   static const String pending = "Pending";

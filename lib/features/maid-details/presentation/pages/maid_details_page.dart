@@ -117,7 +117,7 @@ class MaidDetailsPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      CustomVerticalDivider(),
+                      CustomVerticalDivider(padding: padding12V,),
                       ProfileUserInfoWidget(
                         icon: starIcon,
                         label: AppStaticString.serviceCharge,
@@ -173,7 +173,7 @@ class MaidDetailsPage extends StatelessWidget {
                                   children: [
                                     ProfilePicNameWithSubtitle(
                                       showAvailability: false,
-                                      showRating: false,
+                                      showTrailing: false,
 
                                       ///========================= dynamic profile details===================///
                                       profileSubText: 'founder, fresh shpw',

@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/components/custom_appbar.dart';
+import 'package:maid_service/core/components/custom_button.dart';
 import 'package:maid_service/core/components/custom_network_image.dart';
 import 'package:maid_service/core/components/custom_text.dart';
+import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
@@ -12,11 +15,12 @@ import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/core/enum/booking_status_enum.dart';
+import 'package:maid_service/core/helpers/helper_function.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
-import 'package:maid_service/features/bottom-navigation/bloc/booking/time_line_bloc.dart';
+import 'package:maid_service/features/booking-status/bloc/booking/time_line_bloc.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/widgets/time_line_widget.dart';
+import 'package:maid_service/features/booking-status/presentation/widgets/time_line_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/white_container_with_shadow_widget.dart';
 
 class BookingTrackPage extends StatelessWidget {
@@ -100,6 +104,7 @@ class BookingTrackPage extends StatelessWidget {
                     ),
                     CircleButtonWidget(
                       icon: CupertinoIcons.heart,
+                      iconSize: 20.sp,
                     )
                   ],
                 ),
@@ -111,7 +116,9 @@ class BookingTrackPage extends StatelessWidget {
                     : false,
                 customButton: RatingValueContainerWidget(
                   ratingValue: AppStaticString.giveReview,
-                  function: () {},
+                  function: () {
+                    HelperFunction.reviewRatingDialogWidget(context);
+                  },
                 ),
               ),
               BlocProvider(
@@ -130,6 +137,7 @@ class BookingTrackPage extends StatelessWidget {
                           itemCount: state.entries.length,
                           itemBuilder: (context, index) {
                             return TimelineTile(
+                              bookingStatusEnum: bookingStatusEnum,
                               entry: state.entries[index],
                               isLast: index == state.entries.length - 1,
                             );
@@ -145,4 +153,5 @@ class BookingTrackPage extends StatelessWidget {
       ),
     );
   }
+
 }

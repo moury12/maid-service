@@ -22,7 +22,7 @@ class MaidCardWidget extends StatelessWidget {
       spacing: 12.h,
       children: [
         ProfilePicNameWithSubtitle(
-          showRating: true,
+          showTrailing: true,
           showAvailability: true,
         ),
         Row(
@@ -80,19 +80,20 @@ class MaidCardWidget extends StatelessWidget {
 class ProfilePicNameWithSubtitle extends StatelessWidget {
   final String? profilePic;
   final bool? showAvailability;
-  final bool? showRating;
+  final bool? showTrailing;
   final String? profileName;
   final String? profileSubText;
   final Color? subTextColor;
+  final Widget? trailing;
 
   const ProfilePicNameWithSubtitle({
     super.key,
-    this.showRating = false,
+    this.showTrailing = false,
     this.profilePic,
     this.profileName,
     this.profileSubText,
     this.subTextColor,
-    this.showAvailability = false,
+    this.showAvailability = false, this.trailing,
   });
 
   @override
@@ -148,8 +149,8 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
 
         ///=========================dynamic rate ========================///
 
-        showRating == true
-            ? RatingValueContainerWidget(
+        showTrailing == true
+            ?trailing?? RatingValueContainerWidget(
                 ratingValue: '0.5',
               )
             : SizedBox.shrink()

@@ -4,6 +4,7 @@ import 'package:maid_service/core/components/custom_container.dart';
 import 'package:maid_service/core/components/custom_text.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
+import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/white_container_with_shadow_widget.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/custom_divider.dart';
@@ -54,7 +55,7 @@ class MaidDetailsTabContent extends StatelessWidget {
             style: poppinsSemiBold,
             fontSize: getFontSizeExtraLarge(context),
           ),
-          CustomVerticalDivider(),
+          CustomVerticalDivider(padding: padding12V,),
 
           ///=============== dynamic bio =====================///
           child ??

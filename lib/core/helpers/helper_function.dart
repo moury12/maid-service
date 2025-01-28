@@ -12,7 +12,11 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/auth/presentation/pages/login_page.dart';
 import 'package:maid_service/features/auth/presentation/pages/select_role_page.dart';
-import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:maid_service/core/components/custom_textfield.dart';
+import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
+import 'package:maid_service/features/maid-details/presentation/widgets/custom_divider.dart';
 
 class HelperFunction {
   static void showSignInDialog(BuildContext context) {
@@ -152,4 +156,72 @@ class HelperFunction {
       },
     );
   }
+static  Future<dynamic> reviewRatingDialogWidget(BuildContext context) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => AlertDialog(
+        contentPadding: EdgeInsets.zero,
+        titlePadding: EdgeInsets.zero,
+        content: Padding(
+          padding: padding12,
+          child: Column(
+            spacing: 12.h,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment:
+                MainAxisAlignment.spaceBetween,
+                children: [
+                  CircleButtonWidget(
+                    iconSize: 20.sp,
+                    icon: CupertinoIcons.multiply,
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  CustomText(
+                    text: AppStaticString.writeReview,
+                    style: poppinsSemiBold,
+                    fontSize: getFontSizeExtraLarge(context),
+                  ),
+                  SizedBox.shrink()
+                ],
+              ),
+              CustomVerticalDivider(),
+              CustomText(
+                text: AppStaticString.howWouldYouRate,
+                style: poppinsSemiBold,
+                fontSize: getFontSizeLarge(context),
+              ),
+              RatingBar(
+                itemCount: 5,
+                itemSize: 24.sp,
+                initialRating: 2.5,
+                itemPadding: padding6H,
+                ratingWidget: RatingWidget(
+                    full: Image.asset(fullStarIcon),
+                    half: Image.asset(halfStarIcon),
+                    empty: Image.asset(emptyStarIcon)),
+                allowHalfRating: true,
+                onRatingUpdate: (value) {},
+              ),
+              CustomVerticalDivider(),
+              CustomTextField(borderRadius: 12.r,
+                isRequired: true,
+                title: AppStaticString.review,
+                hintText: AppStaticString.enterYourReview,
+                maxLines: 3,
+              ),
+              CustomButton(onTap: () {
+
+              },title: AppStaticString.submit,)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }

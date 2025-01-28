@@ -7,11 +7,14 @@ import 'package:maid_service/core/constants/text_style_constant.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.kWhiteColor
+      ),
       splashColor: AppColors.kButtonBackgroundColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-
         backgroundColor: AppColors.kWhiteColor,
-showUnselectedLabels: true, type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.kPrimaryColor,
         unselectedItemColor: AppColors.kSubTextColor,
         unselectedLabelStyle: poppinsRegular.copyWith(
@@ -19,6 +22,7 @@ showUnselectedLabels: true, type: BottomNavigationBarType.fixed,
         selectedLabelStyle: poppinsMedium.copyWith(
             color: AppColors.kPrimaryColor, fontSize: 12.sp),
       ),
+
       checkboxTheme: CheckboxThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4), // Rounded corners

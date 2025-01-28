@@ -9,10 +9,10 @@ import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart'
 import 'package:maid_service/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
 import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_tracks_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_tracks_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/canceled_booking_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/canceled_booking_page.dart';
+import 'package:maid_service/features/booking-status/presentation/pages/booking_tracks_page.dart';
+import 'package:maid_service/features/booking-status/presentation/pages/booking_tracks_page.dart';
+import 'package:maid_service/features/booking-status/presentation/pages/canceled_booking_page.dart';
+import 'package:maid_service/features/booking-status/presentation/pages/canceled_booking_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/bottom_navigation_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';

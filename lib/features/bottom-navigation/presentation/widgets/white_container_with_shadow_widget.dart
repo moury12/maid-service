@@ -6,8 +6,9 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 class WhiteContainerWithShadowWidget extends StatelessWidget {
   final Widget? child;
   final EdgeInsets? padding;
+  final bool? isBoxShadow;
   const WhiteContainerWithShadowWidget({
-    super.key, this.child, this.padding,
+    super.key, this.child, this.padding, this.isBoxShadow=true,
   });
 
   @override
@@ -17,12 +18,12 @@ class WhiteContainerWithShadowWidget extends StatelessWidget {
       decoration: BoxDecoration(
           color: AppColors.kWhiteColor,
           borderRadius: BorderRadius.circular(12.r),
-          boxShadow: [
+          boxShadow:isBoxShadow==true? [
             BoxShadow(
                 color: Color(0xff101828).withOpacity(.1),
                 spreadRadius: 0,
                 blurRadius: 2)
-          ]),
+          ]:[]),
       child: child,
     );
   }
