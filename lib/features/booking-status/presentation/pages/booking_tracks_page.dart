@@ -23,6 +23,8 @@ import 'package:maid_service/features/bottom-navigation/presentation/widgets/mai
 import 'package:maid_service/features/booking-status/presentation/widgets/time_line_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/white_container_with_shadow_widget.dart';
 
+import '../widgets/rating_review_widget.dart';
+
 class BookingTrackPage extends StatelessWidget {
   static const String routeName = '/booking-track';
   const BookingTrackPage({super.key});
@@ -117,7 +119,7 @@ class BookingTrackPage extends StatelessWidget {
                 customButton: RatingValueContainerWidget(
                   ratingValue: AppStaticString.giveReview,
                   function: () {
-                    HelperFunction.reviewRatingDialogWidget(context);
+                    HelperFunction.customDialogWidget(context, title: AppStaticString.writeReview, function: () {  }, child: RatingReviewWidget(),);
                   },
                 ),
               ),

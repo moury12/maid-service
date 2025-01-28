@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
+import 'package:maid_service/features/booking-status/presentation/widgets/rating_review_widget.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/custom_divider.dart';
 
 class HelperFunction {
@@ -156,7 +157,12 @@ class HelperFunction {
       },
     );
   }
-static  Future<dynamic> reviewRatingDialogWidget(BuildContext context) {
+
+  static Future<dynamic> customDialogWidget(BuildContext context,
+      {required String title,
+      required Widget child,
+       Function()? function,
+      Widget? button}) {
     return showDialog(
       barrierDismissible: false,
       context: context,
@@ -170,8 +176,7 @@ static  Future<dynamic> reviewRatingDialogWidget(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleButtonWidget(
                     iconSize: 20.sp,
@@ -181,47 +186,28 @@ static  Future<dynamic> reviewRatingDialogWidget(BuildContext context) {
                       Navigator.pop(context);
                     },
                   ),
-                  CustomText(
-                    text: AppStaticString.writeReview,
-                    style: poppinsSemiBold,
-                    fontSize: getFontSizeExtraLarge(context),
+                  Expanded(
+                    child: CustomText(
+                      textAlign: TextAlign.center,
+                      text: title,
+                      style: poppinsSemiBold,
+                      fontSize: getFontSizeExtraLarge(context),
+                    ),
                   ),
-                  SizedBox.shrink()
+                  space24W
                 ],
               ),
               CustomVerticalDivider(),
-              CustomText(
-                text: AppStaticString.howWouldYouRate,
-                style: poppinsSemiBold,
-                fontSize: getFontSizeLarge(context),
-              ),
-              RatingBar(
-                itemCount: 5,
-                itemSize: 24.sp,
-                initialRating: 2.5,
-                itemPadding: padding6H,
-                ratingWidget: RatingWidget(
-                    full: Image.asset(fullStarIcon),
-                    half: Image.asset(halfStarIcon),
-                    empty: Image.asset(emptyStarIcon)),
-                allowHalfRating: true,
-                onRatingUpdate: (value) {},
-              ),
-              CustomVerticalDivider(),
-              CustomTextField(borderRadius: 12.r,
-                isRequired: true,
-                title: AppStaticString.review,
-                hintText: AppStaticString.enterYourReview,
-                maxLines: 3,
-              ),
-              CustomButton(onTap: () {
-
-              },title: AppStaticString.submit,)
+              child,
+              button ??
+                  CustomButton(
+                    onTap: function??(){},
+                    title: AppStaticString.submit,
+                  )
             ],
           ),
         ),
       ),
     );
   }
-
 }

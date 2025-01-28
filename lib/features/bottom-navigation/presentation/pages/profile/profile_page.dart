@@ -11,6 +11,7 @@ import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/core/helpers/helper_function.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/profile_card_widget.dart';
@@ -31,12 +32,34 @@ class ProfilePage extends StatelessWidget {
               isBoxShadow: false,
 
               ///=====================dynamic mail ======================///
-              child: ProfilePicNameWithSubtitle(
-                profileSubText: 'floydmiles@gmail.com',
-                showTrailing: true,
-                trailing: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: AppColors.kTextColor,
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(12.r),
+                  onTap: () {
+                    HelperFunction.customDialogWidget(context,
+                        title: '${AppStaticString.bookingId}:K1810B001',
+                        child: Column(
+                          children: [
+
+                          ],
+                        ),
+                        button: CustomButton(
+                          onTap: () {},
+                          title: AppStaticString.canceled,
+                          textColor: AppColors.kPrimaryColor,
+                          fillColor: AppColors.kPrimaryColor.withOpacity(.1),
+                          borderColor: AppColors.kPrimaryColor,
+                        ));
+                  },
+                  child: ProfilePicNameWithSubtitle(
+                    profileSubText: 'floydmiles@gmail.com',
+                    showTrailing: true,
+                    trailing: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: AppColors.kTextColor,
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -105,12 +105,7 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
 
         Stack(
           children: [
-            CustomNetworkImage(
-                boxShape: BoxShape.circle,
-                imageErrorUrl: profilePic,
-                imageUrl: profilePic ?? '',
-                height: 44.w,
-                width: 44.w),
+            CircularProfilePicture(profilePic: profilePic),
             showAvailability == true
                 ? Positioned(
                     bottom: 2,
@@ -156,6 +151,25 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
             : SizedBox.shrink()
       ],
     );
+  }
+}
+
+class CircularProfilePicture extends StatelessWidget {
+  const CircularProfilePicture({
+    super.key,
+    required this.profilePic,
+  });
+
+  final String? profilePic;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomNetworkImage(
+        boxShape: BoxShape.circle,
+        imageErrorUrl: dummyUserIcon,
+        imageUrl: profilePic ?? '',
+        height: 44.w,
+        width: 44.w);
   }
 }
 

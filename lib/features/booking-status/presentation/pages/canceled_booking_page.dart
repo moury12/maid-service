@@ -17,7 +17,9 @@ class CanceledBookingPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: padding16,
-          child: HistoryListWidget(),
+          child: HistoryListWidget(function: () {
+
+          },),
         ),
       ),
     );

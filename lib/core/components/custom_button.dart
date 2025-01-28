@@ -67,7 +67,8 @@ class CustomButton extends StatelessWidget {
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(radius ?? 63.r),
         child: InkWell(
-          splashColor: AppColors.kButtonBackgroundColor,
+          splashColor: AppColors.kPrimaryAccentColor ,
+
           borderRadius: BorderRadius.circular(radius ?? 63.r),
           onTap: isLoading == true
               ? () {}
