@@ -47,7 +47,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     final List<Widget> pages = [
       const HomePage(),
       const BookingPage(),
-      const SearchPage(),
+       SearchPage(),
       const NotificationPage(),
       const ProfilePage(),
     ];
@@ -99,6 +99,7 @@ Navigator.pushNamed(context, CanceledBookingPage.routeName);
         }
 
         return Scaffold(
+          backgroundColor:currentIndex==2?AppColors.kWhiteColor:AppColors.kButtonBackgroundColor ,
           appBar: appBars[currentIndex],
           body: SafeArea(
             child: IndexedStack(index: currentIndex, children: pages),

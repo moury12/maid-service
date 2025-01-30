@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
-import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 
 class AppTheme {
@@ -9,6 +8,14 @@ class AppTheme {
     return ThemeData(
       dialogTheme: DialogThemeData(
         backgroundColor: AppColors.kWhiteColor
+      ),
+      popupMenuTheme: PopupMenuThemeData(surfaceTintColor: AppColors.kWhiteColor,
+      color: AppColors.kWhiteColor),
+      switchTheme: SwitchThemeData(
+
+        trackOutlineColor: WidgetStateProperty.all(AppColors.kButtonBackgroundColor), // Outline color for track
+        overlayColor: WidgetStateProperty.all(AppColors.kSubTextColor), // Overlay color when pressed
+
       ),
       splashColor: AppColors.kButtonBackgroundColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

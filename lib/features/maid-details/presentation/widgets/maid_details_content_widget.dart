@@ -11,26 +11,24 @@ import 'package:maid_service/features/maid-details/presentation/widgets/custom_d
 
 class CustomContainerWithBorder extends StatelessWidget {
   final Widget child;
+  final double? radius;
+  final Color? borderColor;
   final Function()? function;
   const CustomContainerWithBorder({
     super.key,
     required this.child,
-    this.function,
+    this.function,  this.radius, this.borderColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
+function: function,
       borderWidth: 2,
-      borderColor: AppColors.kButtonBackgroundColor,
-      radius: 12.r,
+      borderColor:borderColor?? AppColors.kButtonBackgroundColor,
+      radius:radius?? 12.r,
       backgroundColor: AppColors.kWhiteColor,
-      widget: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          splashColor: AppColors.kButtonBackgroundColor,
-            onTap: function ?? () {}, child: child),
-      ),
+      widget: child,
     );
   }
 }

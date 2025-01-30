@@ -9,6 +9,7 @@ class CustomContainer extends StatelessWidget {
   final double? radius;
   final double? width;
   final Widget widget;
+  final Function()? function;
   final EdgeInsets? padding;
   const CustomContainer({
     super.key,
@@ -16,21 +17,34 @@ class CustomContainer extends StatelessWidget {
     this.radius,
     this.padding,
     required this.widget,
-    this.width, this.borderColor, this.borderWidth,
+    this.width,
+    this.borderColor,
+    this.borderWidth,
+    this.function,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      padding: padding ?? EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
       decoration: BoxDecoration(
           border: Border.all(
               color: borderColor ?? Colors.transparent,
               width: borderWidth ?? 1),
           color: backgroundColor ?? AppColors.kButtonBackgroundColor,
           borderRadius: BorderRadius.circular(radius ?? 50.w)),
-      child: widget,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashColor: function!=null?AppColors.kButtonBackgroundColor:Colors.transparent,
+          borderRadius: BorderRadius.circular(radius ?? 50.w),
+          onTap: function,
+            child: Padding(
+          padding:
+              padding ?? EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+          child: widget,
+        )),
+      ),
     );
   }
 }

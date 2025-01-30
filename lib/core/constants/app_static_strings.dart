@@ -75,6 +75,7 @@ class AppStaticString {
   static const String workLocation = "Work Location ";
   static const String submit = "Submit";
   static const String review = "Review";
+  static const String recentView = "Recent views";
 
   static const String trackingUpdate = "Tracking Updates";
   static const String ongoing = "Ongoing";
@@ -127,5 +128,14 @@ class AppStaticString {
   static const String zipCode = "ZIP Code";
   static const String streetName = "Street name, building";
   static const String findMaid = "Find Maid";
+  static const String filter = "Filter";
+  static const String filterBy = "Filter By";
+  static const String reset = "Reset";
+  static const String max = "Max";
+  static const String min = "Min";
+  static const String providedByVetted = "Provided by vetted professionals, verified for quality and service.";
+  static const String showProMaids = "Show Pro Maids Only";
+  static const String priceRange = "Price Range";
+  static const String sort = "Sort";
   static const String becomeAMaid = "Become a Maid";
 }

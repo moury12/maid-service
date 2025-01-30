@@ -161,6 +161,7 @@ class HelperFunction {
   static Future<dynamic> customDialogWidget(BuildContext context,
       {required String title,
       required Widget child,
+       Widget? trailing,
        Function()? function,
       Widget? button}) {
     return showDialog(
@@ -194,7 +195,7 @@ class HelperFunction {
                       fontSize: getFontSizeExtraLarge(context),
                     ),
                   ),
-                  space24W
+                trailing??  space24W
                 ],
               ),
               CustomVerticalDivider(),

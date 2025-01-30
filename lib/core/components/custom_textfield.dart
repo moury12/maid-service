@@ -42,7 +42,7 @@ class CustomTextField extends StatefulWidget {
       this.title,
       this.isEnable = true,
       this.height,
-      this.isRequired = false, this.borderRadius});
+      this.isRequired = false, this.borderRadius, this.titleTextColor});
 
   final TextEditingController? textEditingController;
   final FocusNode? focusNode;
@@ -63,6 +63,7 @@ class CustomTextField extends StatefulWidget {
   final TextStyle? hintStyle;
 
   final Color? suffixIconColor;
+  final Color? titleTextColor;
   final Color? fillColor;
 
   final Widget? suffixIcon;
@@ -103,7 +104,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     widget.title ?? '',
                     style: poppinsMedium.copyWith(
                         fontSize: getFontSizeSemiSmall(context),
-                        color: AppColors.kTextColor),
+                        color:widget.titleTextColor?? AppColors.kTextColor),
                   ),
                   widget.isRequired == true
                       ? Padding(
