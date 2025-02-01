@@ -12,17 +12,19 @@ import 'package:maid_service/features/maid-details/presentation/widgets/custom_d
 class CustomContainerWithBorder extends StatelessWidget {
   final Widget child;
   final double? radius;
+  final EdgeInsets? padding;
   final Color? borderColor;
   final Function()? function;
   const CustomContainerWithBorder({
     super.key,
     required this.child,
-    this.function,  this.radius, this.borderColor,
+    this.function,  this.radius, this.borderColor, this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
+      padding: padding,
 function: function,
       borderWidth: 2,
       borderColor:borderColor?? AppColors.kButtonBackgroundColor,
