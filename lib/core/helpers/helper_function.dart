@@ -163,12 +163,14 @@ class HelperFunction {
       required Widget child,
        Widget? trailing,
        Function()? function,
-      Widget? button}) {
+      Widget? button,String? buttonTitle}) {
     return showDialog(
       barrierDismissible: false,
+
       context: context,
       builder: (context) => AlertDialog(
         contentPadding: EdgeInsets.zero,
+        scrollable: true,
         titlePadding: EdgeInsets.zero,
         content: Padding(
           padding: padding12,
@@ -203,7 +205,7 @@ class HelperFunction {
               button ??
                   CustomButton(
                     onTap: function??(){},
-                    title: AppStaticString.submit,
+                    title:buttonTitle?? AppStaticString.submit,
                   )
             ],
           ),

@@ -14,6 +14,8 @@ import 'package:maid_service/features/bottom-navigation/presentation/pages/botto
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/client/all_maid_list_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/add_maid_information_page.dart';
 import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
+import 'package:maid_service/features/maid-earnings/presentation/pages/all_transection_history.dart';
+import 'package:maid_service/features/maid-earnings/presentation/pages/maid_earnings_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/onboarding/initial_onboarding_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/splash_page.dart';
 
@@ -22,6 +24,8 @@ class AppRoutes {
     SplashPage.routeName: (context) => SplashPage(),
     SignUpPage.routeName: (context) => SignUpPage(),
     OtpPage.routeName: (context) => OtpPage(),
+    AllTransectionHistory.routeName: (context) => AllTransectionHistory(),
+    MaidEarningsPage.routeName: (context) => MaidEarningsPage(),
     InitialOnboardingPage.routeName: (context) => InitialOnboardingPage(),
     SetNewPasswordPage.routeName: (context) => SetNewPasswordPage(),
     LoginPage.routeName: (context) => LoginPage(),

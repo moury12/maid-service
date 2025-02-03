@@ -11,7 +11,8 @@ class AllMaidListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: CustomAppbar(title: AppStaticString.allMaids,),
+    String? arg = ModalRoute.of(context)!.settings.arguments as String;
+    return Scaffold(appBar: CustomAppbar(title:arg!=null&& arg=='Maid'?AppStaticString.serviceRequest: AppStaticString.allMaids,),
     body: ListView.builder(
       padding: padding12,
       shrinkWrap: true,
@@ -19,7 +20,10 @@ class AllMaidListPage extends StatelessWidget {
       itemBuilder: (context, index) => Padding(
         padding: padding6V,
         child: WhiteContainerWithShadowWidget(
-          child: MaidCardWidget(),
+          child: MaidCardWidget(
+            description:arg!=null&& arg=='Maid'?AppStaticString.dummyDesc:null,
+            fromMaid: arg!=null&& arg=='Maid'?true:false,
+          ),
         ),
       ),
       itemCount: 5,

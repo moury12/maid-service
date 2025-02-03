@@ -51,48 +51,55 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-    HiveBoxes.getSelectedRole().get(selectedRole)=='Maid'?HomeMaidPage():  const HomePage(),
+      HiveBoxes.getSelectedRole().get(selectedRole) == 'Maid'
+          ? HomeMaidPage()
+          : const HomePage(),
       const BookingPage(),
-       SearchPage(),
+      if (HiveBoxes.getSelectedRole().get(selectedRole) != 'Maid')  SearchPage(),
       const NotificationPage(),
       const ProfilePage(),
     ];
 
     final List<PreferredSizeWidget> appBars = [
-      HiveBoxes.getSelectedRole().get(selectedRole)=='Maid'?
-          CustomAppbar(
-            showLeading: false,
-            titleWidget: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              CustomText(text: AppStaticString.currentBalance,color: AppColors.kSubTextColor,
+      HiveBoxes.getSelectedRole().get(selectedRole) == 'Maid'
+          ? CustomAppbar(
+              showLeading: false,
+              titleWidget: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: AppStaticString.currentBalance,
+                    color: AppColors.kSubTextColor,
+                  ),
+                  CustomText(
+                    text: '\$ 00.00',
+                    style: poppinsMedium,
+                    fontSize: getFontSizeLarge(context),
+                  ),
+                ],
               ),
-              CustomText(text: '\$ 00.00',style: poppinsMedium,fontSize: getFontSizeLarge(context),),
-            ],),
-            actionWidget: IconButton(onPressed: () {
-              
-            }, icon: Image.asset(serviceReqIcon)),
-          )
-          :   CustomAppbar(
-        showLeading: false,
-        titleWidget: ProfilePicNameWithSubtitle(
-          showAvailability: false,
-          showTrailing: false,
-          profileSubText: AppStaticString.welcomeToMermaids,
-          subTextColor: AppColors.kTextColor,
-        ),
-
-      ),
+              actionWidget: IconButton(
+                  onPressed: () {}, icon: Image.asset(serviceReqIcon)),
+            )
+          : CustomAppbar(
+              showLeading: false,
+              titleWidget: ProfilePicNameWithSubtitle(
+                showAvailability: false,
+                showTrailing: false,
+                profileSubText: AppStaticString.welcomeToMermaids,
+                subTextColor: AppColors.kTextColor,
+              ),
+            ),
       CustomAppbar(
         title: AppStaticString.bookingHistory,
         actionWidget: CircleButtonWidget(
           img: crossIcon,
           onPressed: () {
-Navigator.pushNamed(context, CanceledBookingPage.routeName);
+            Navigator.pushNamed(context, CanceledBookingPage.routeName);
           },
         ),
       ),
-      CustomAppbar(
+      if (HiveBoxes.getSelectedRole().get(selectedRole) != 'Maid') CustomAppbar(
         titleWidget: FocusScope(
           child: CustomTextField(
             fillColor: AppColors.kButtonBackgroundColor,
@@ -119,12 +126,15 @@ Navigator.pushNamed(context, CanceledBookingPage.routeName);
         }
 
         return Scaffold(
-          backgroundColor:currentIndex==2?AppColors.kWhiteColor:AppColors.kButtonBackgroundColor ,
+          backgroundColor: currentIndex == 2
+              ? AppColors.kWhiteColor
+              : AppColors.kButtonBackgroundColor,
           appBar: appBars[currentIndex],
           body: SafeArea(
             child: IndexedStack(index: currentIndex, children: pages),
           ),
           bottomNavigationBar: BottomNavigationBar(
+
             currentIndex: currentIndex,
             onTap: (index) {
               _navigationBloc.add(ChangeNavEvent(currentIndex: index));
@@ -134,12 +144,13 @@ Navigator.pushNamed(context, CanceledBookingPage.routeName);
                   homeIcon, AppStaticString.home, currentIndex, 0),
               _buildBottomNavItem(
                   calenderIcon, AppStaticString.booking, currentIndex, 1),
-              _buildBottomNavItem(
-                  searchIcon, AppStaticString.search, currentIndex, 2),
+              if (HiveBoxes.getSelectedRole().get(selectedRole) != 'Maid')
+                _buildBottomNavItem(
+                    searchIcon, AppStaticString.search, currentIndex, 2),
               _buildBottomNavItem(notificationIcon,
-                  AppStaticString.notification, currentIndex, 3),
+                  AppStaticString.notification, currentIndex, HiveBoxes.getSelectedRole().get(selectedRole) == 'Maid'?2:3),
               _buildBottomNavItem(
-                  profileIcon, AppStaticString.profile, currentIndex, 4),
+                  profileIcon, AppStaticString.profile, currentIndex, HiveBoxes.getSelectedRole().get(selectedRole) == 'Maid'?3:4),
             ],
             backgroundColor: AppColors.kWhiteColor,
           ),
@@ -151,6 +162,7 @@ Navigator.pushNamed(context, CanceledBookingPage.routeName);
   BottomNavigationBarItem _buildBottomNavItem(
       String icon, String label, int currentIndex, int index) {
     return BottomNavigationBarItem(
+
       icon: Image.asset(
         icon,
         height: 20.w,
@@ -158,9 +170,8 @@ Navigator.pushNamed(context, CanceledBookingPage.routeName);
             ? AppColors.kPrimaryColor
             : AppColors.kSubTextColor,
       ),
+
       label: label,
     );
   }
 }
-
-

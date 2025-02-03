@@ -11,6 +11,7 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
 import 'package:maid_service/features/book-maid/presentation/widgets/confirm_service_content_widget.dart';
+import 'package:maid_service/features/book-maid/presentation/widgets/mermaid_coin_widget.dart';
 import 'package:maid_service/features/book-maid/presentation/widgets/my_location_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/home/client/home_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_grid_widget.dart';
@@ -150,21 +151,7 @@ class BookingDetailsPage extends StatelessWidget {
                         )
                       ],
                     ),
-                    Row(
-                      spacing: 6.w,
-                      children: [
-                      Image.asset(mermaidLogoWithText,color: AppColors.kPrimaryColor,height: 24.h,),
-                        CustomText(
-                          text: '\$MRMD Coin',
-                          style: poppinsSemiBold,
-                          fontSize: getFontSizeLarge(context),
-                        ), Spacer(),
-
-                        ///=====================dynamic price========================///
-
-                        CoinPointWidget(point: '50',)
-                      ],
-                    ),
+                    MermaidCoinWidget(),
                     CustomButton(onTap: () {
 
                     },
@@ -179,3 +166,4 @@ class BookingDetailsPage extends StatelessWidget {
     );
   }
 }
+

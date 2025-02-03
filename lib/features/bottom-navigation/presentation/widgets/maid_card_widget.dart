@@ -14,10 +14,12 @@ import 'package:maid_service/features/maid-details/presentation/pages/maid_detai
 class MaidCardWidget extends StatelessWidget {
   final String? description;
   final bool? fromMaid;
+  final Function()? function;
   const MaidCardWidget({
     super.key,
     this.description,
     this.fromMaid = false,
+    this.function,
   });
 
   @override
@@ -26,10 +28,11 @@ class MaidCardWidget extends StatelessWidget {
       spacing: 12.h,
       children: [
         ProfilePicNameWithSubtitle(
-          showTrailing:fromMaid==true?false: true,
+          showTrailing: fromMaid == true ? false : true,
           showAvailability: true,
-          profileName: fromMaid==true?AppStaticString.maidNeeded:'Jenny Wilson',
-          profileSubText: fromMaid==true?'Jenny Wilson':null,
+          profileName:
+              fromMaid == true ? AppStaticString.maidNeeded : 'Jenny Wilson',
+          profileSubText: fromMaid == true ? 'Jenny Wilson' : null,
         ),
         description != null
             ? Column(
@@ -82,9 +85,10 @@ class MaidCardWidget extends StatelessWidget {
             Expanded(
               child: CustomButton(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-                onTap: () {
-                  Navigator.pushNamed(context, MaidDetailsPage.routeName);
-                },
+                onTap: function ??
+                    () {
+                      Navigator.pushNamed(context, MaidDetailsPage.routeName);
+                    },
                 title: AppStaticString.viewDetails,
               ),
             )
@@ -199,13 +203,14 @@ class RatingValueContainerWidget extends StatelessWidget {
   final String? ratingValue;
   final Color? color;
   final Widget? child;
+  final IconData? icon;
   final Function()? function;
   const RatingValueContainerWidget({
     super.key,
     this.ratingValue,
     this.color,
     this.child,
-    this.function,
+    this.function, this.icon,
   });
 
   @override
@@ -220,7 +225,7 @@ class RatingValueContainerWidget extends StatelessWidget {
               spacing: 6.w,
               children: [
                 Icon(
-                  CupertinoIcons.star,
+                  icon??CupertinoIcons.star,
                   color: AppColors.kGreenTextColor,
                   size: 15.sp,
                 ),

@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 double getFontSizeSmall(BuildContext context) =>
     MediaQuery.of(context).size.width >= 1300 ? 15.sp : 12.sp;
+double getFontSizeExtraSmall(BuildContext context) =>
+    MediaQuery.of(context).size.width >= 1300 ? 10.sp : 8.sp;
 
 double getFontSizeSemiSmall(BuildContext context) =>
     MediaQuery.of(context).size.width >= 1300 ? 16.sp : 14.sp;

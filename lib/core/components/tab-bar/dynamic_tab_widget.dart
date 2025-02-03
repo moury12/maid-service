@@ -36,7 +36,7 @@ class DynamicTabWidget extends StatelessWidget {
 
               dividerColor: Colors.transparent,
               overlayColor: const WidgetStatePropertyAll<Color>(
-                  AppColors.kButtonBackgroundColor),
+                  Colors.transparent),
               isScrollable: false, // Keep tabs aligned properly
               indicator: BoxDecoration(
                 color: AppColors.kWhiteColor, // Active tab background color

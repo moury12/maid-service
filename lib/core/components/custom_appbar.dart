@@ -9,12 +9,13 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({
     super.key,
     this.title,
-    this.showLeading = true, this.titleWidget, this.actionWidget,
+    this.showLeading = true, this.titleWidget, this.actionWidget, this.centerTitle,
   });
   final String? title;
   final Widget? titleWidget;
   final Widget? actionWidget;
   final bool? showLeading;
+  final bool? centerTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
               },
             )
           : SizedBox.shrink(),
+      centerTitle:centerTitle?? false,
       title:titleWidget?? CustomText(
        text:  title ?? '',
         style: poppinsMedium,
