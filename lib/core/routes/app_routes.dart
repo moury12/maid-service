@@ -8,15 +8,11 @@ import 'package:maid_service/features/auth/presentation/pages/set_new_password.d
 import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:maid_service/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
-import 'package:maid_service/features/book-maid/presentation/pages/booking_details_page.dart';
 import 'package:maid_service/features/booking-status/presentation/pages/booking_tracks_page.dart';
-import 'package:maid_service/features/booking-status/presentation/pages/booking_tracks_page.dart';
-import 'package:maid_service/features/booking-status/presentation/pages/canceled_booking_page.dart';
 import 'package:maid_service/features/booking-status/presentation/pages/canceled_booking_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/bottom_navigation_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
-import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/client/all_maid_list_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/add_maid_information_page.dart';
 import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/onboarding/initial_onboarding_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/pages/splash_page.dart';
@@ -29,6 +25,7 @@ class AppRoutes {
     InitialOnboardingPage.routeName: (context) => InitialOnboardingPage(),
     SetNewPasswordPage.routeName: (context) => SetNewPasswordPage(),
     LoginPage.routeName: (context) => LoginPage(),
+    AddMaidInformationPage.routeName: (context) => AddMaidInformationPage(),
     BottomNavigationPage.routeName: (context) => BottomNavigationPage(),
     SelectRolePage.routeName: (context) => SelectRolePage(),
     VerifyEmailPage.routeName: (context) => VerifyEmailPage(),

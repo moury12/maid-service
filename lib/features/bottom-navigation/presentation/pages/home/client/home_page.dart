@@ -4,7 +4,7 @@ import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/home/all_maid_list_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/client/all_maid_list_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_grid_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/category_item_card_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';

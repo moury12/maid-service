@@ -9,9 +9,11 @@ class AppStaticString {
   static const String signUpButton = "Sign up";
   static const String loginButton = "Log In";
   static const String send = "Send";
+  static const String updateProfile = "Update Profile";
   static const String giveReview = "Give Review";
   static const String viewDetails = "View Details";
   static const String viewAll = "View All";
+  static const String confirm = "Confirm";
 
   ///=========================== Appbar text==========================///
   static const String myLocation = "My Location";
@@ -23,12 +25,22 @@ class AppStaticString {
   static const String bookingDetails = "Booking Details";
   static const String bookingId = "Booking ID";
   static const String details = "Details";
+  static const String addYourInfo = "Add Your Information";
+  static const String forSupportedMail = "For Support Mail Us";
+  static const String editProfile = "Edit Profile";
 
   ///========================== normal Text =============================///
   static const String signInMsg = "Quality cleaning tailored to your needs.";
   static const String pleaseLoginToYourAcc = "Please log in to your account.";
   static const String welcomeBack = "Welcome Back";
   static const String others = "Others";
+  static const String maidNeeded = "Maid Needed";
+  static const String serviceRequest = "Service Requests";
+  static const String stuckOnWhere = "Stuck on where to start? Use the Mermaids user guidelines.";
+  static const String choseYourService = "Chose Your Services";
+  static const String addBio = "Add Bio";
+  static const String availability = "Availability";
+  static const String currentBalance = "Current balance";
   static const String userBio = "User Bio";
   static const String welcomeToMermaids = "Welcome to Mermaids";
   static const String yearsOfExperience = " Years of Experience";
@@ -93,7 +105,7 @@ class AppStaticString {
   static const String payNow = "Pay now";
   static const String total = "Total ";
   static const String inclVat = "(Incl. VAT)";
-  static const String choseYourService = "Chose Your Services";
+  static const String choseYourServices = "Chose Your Services";
   static const String endTime = "End Time";
   static const String confirmYourService = "Confirm Your Service";
   static const String date = "Date";

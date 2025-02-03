@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/components/custom_appbar.dart';
+import 'package:maid_service/core/components/custom_text.dart';
 import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
+import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
+import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/core/hive-boxes/hive_boxes.dart';
+import 'package:maid_service/core/utils/static_variables.dart';
 import 'package:maid_service/features/auth/presentation/widgets/circle_button_widget.dart';
 import 'package:maid_service/features/bottom-navigation/bloc/navigation/navigation_bloc.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/booking/booking_page.dart';
 import 'package:maid_service/features/booking-status/presentation/pages/canceled_booking_page.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/pages/home/home_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/client/home_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/home/maid/home_maid_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/notification/notification_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/profile_page.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/pages/search/search_page.dart';
@@ -45,7 +51,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-      const HomePage(),
+    HiveBoxes.getSelectedRole().get(selectedRole)=='Maid'?HomeMaidPage():  const HomePage(),
       const BookingPage(),
        SearchPage(),
       const NotificationPage(),
@@ -53,7 +59,21 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     ];
 
     final List<PreferredSizeWidget> appBars = [
-      CustomAppbar(
+      HiveBoxes.getSelectedRole().get(selectedRole)=='Maid'?
+          CustomAppbar(
+            showLeading: false,
+            titleWidget: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              CustomText(text: AppStaticString.currentBalance,color: AppColors.kSubTextColor,
+              ),
+              CustomText(text: '\$ 00.00',style: poppinsMedium,fontSize: getFontSizeLarge(context),),
+            ],),
+            actionWidget: IconButton(onPressed: () {
+              
+            }, icon: Image.asset(serviceReqIcon)),
+          )
+          :   CustomAppbar(
         showLeading: false,
         titleWidget: ProfilePicNameWithSubtitle(
           showAvailability: false,

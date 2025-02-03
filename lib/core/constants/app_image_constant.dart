@@ -30,6 +30,8 @@ String searchIcon = 'assets/icon/search_icon.png';
 String sortIcon = 'assets/icon/sort_icon.png';
 String starIcon = 'assets/icon/star_icon.png';
 String crossIcon = 'assets/icon/cross_icon.png';
+String serviceReqIcon = 'assets/icon/service_req_icon.png';
+String locationOfUserIcon = 'assets/icon/location_of_user.png';
 String termsIcon = 'assets/icon/terms_condition.png';
 
 ///============================ dummy =========================///
@@ -40,6 +42,7 @@ String dummyUserIcon = 'assets/dummy/dummy-customer.jpg';
 ///============================ Images =========================///
 
 String mermaidLogo = 'assets/image/mermaid_logo.png';
+String mermaidGuidLine = 'assets/image/mermaid_guidline.png';
 String mermaidTextLogo = 'assets/image/mermaid_text_logo.png';
 String mermaidPremiumImage = 'assets/image/mermaid_premium.png';
 String mermaidLogoWithText = 'assets/image/mermaid_with_text_logo.png';

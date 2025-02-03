@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/components/custom_button.dart';
+import 'package:maid_service/core/components/custom_textfield.dart';
 import 'package:maid_service/core/constants/app_colors.dart';
 import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
+import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/helpers/helper_function.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
@@ -11,6 +13,7 @@ import 'package:maid_service/features/bottom-navigation/presentation/widgets/mai
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/premium_mermaids_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/profile_card_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/white_container_with_shadow_widget.dart';
+import 'package:maid_service/features/maid-details/presentation/widgets/custom_divider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -33,18 +36,43 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.r),
                   onTap: () {
                     HelperFunction.customDialogWidget(context,
-                        title: '${AppStaticString.bookingId}:K1810B001',
+                        title: AppStaticString.editProfile,
                         child: Column(
+                          spacing: 16.h,
                           children: [
-
+                            Stack(
+                              children: [
+                                CircularProfilePicture(
+                                  profilePic: '',
+                                  height: 80.w,
+                                ),
+                                Positioned(
+                                    bottom: -10.h,
+                                    right: -10.w,
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        addPictureIcon,
+                                        height: 32.w,
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            CustomVerticalDivider(),
+                            CustomTextField(
+                              title: AppStaticString.name,
+                            ),
+                            CustomTextField(
+                              title: AppStaticString.emailAddress,
+                            ),
+                            CustomTextField(
+                              title: AppStaticString.phoneNumber,
+                            ),
                           ],
                         ),
                         button: CustomButton(
                           onTap: () {},
-                          title: AppStaticString.canceled,
-                          textColor: AppColors.kPrimaryColor,
-                          fillColor: AppColors.kPrimaryColor.withOpacity(.1),
-                          borderColor: AppColors.kPrimaryColor,
+                          title: AppStaticString.updateProfile,
                         ));
                   },
                   child: ProfilePicNameWithSubtitle(
@@ -90,7 +118,19 @@ class ProfilePage extends StatelessWidget {
             ProfileCardWidget(
               img: helpIcon,
               title: AppStaticString.helpSupport,
-              function: () {},
+              function: () {
+                HelperFunction.customDialogWidget(
+                  context,
+                  title: AppStaticString.forSupportedMail,
+                  child: CustomTextField(
+                    hintText: 'jennywilson@gmail.com',
+                    suffixIcon: Padding(
+                      padding: padding12,  
+                      child: Image.asset(copyIcon,height: 20.w,),
+                    ),
+                  ),
+                );
+              },
             ),
             ProfileCardWidget(
               img: logoutIcon,
@@ -103,4 +143,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-

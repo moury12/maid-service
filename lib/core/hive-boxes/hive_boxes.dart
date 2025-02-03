@@ -3,4 +3,5 @@ import 'package:maid_service/core/utils/static_variables.dart';
 
 class HiveBoxes{
   static Box getInitialPhase()=> Hive.box(initialPhase);
+  static Box getSelectedRole()=> Hive.box(role);
 }

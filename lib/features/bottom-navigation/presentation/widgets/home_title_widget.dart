@@ -9,10 +9,12 @@ import 'package:maid_service/core/constants/text_style_constant.dart';
 class HomeTitleWidget extends StatelessWidget {
   final String title;
   final bool? viewAll;
+  final double? fontSize;
+  final TextStyle? style;
   final Widget? customButton;
   final Function()? function;
   const HomeTitleWidget(
-      {super.key, required this.title, this.viewAll=true, this.function, this.customButton});
+      {super.key, required this.title, this.viewAll=true, this.function, this.customButton, this.fontSize, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,8 @@ class HomeTitleWidget extends StatelessWidget {
         Expanded(
           child: CustomText(
             text: title,
-            style: poppinsSemiBold,
-            fontSize: getFontSizeExtraLarge(context),
+            style:style?? poppinsSemiBold,
+            fontSize:fontSize?? getFontSizeExtraLarge(context),
           ),
         ),
         viewAll == true

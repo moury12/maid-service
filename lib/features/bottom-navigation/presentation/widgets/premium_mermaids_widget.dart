@@ -13,8 +13,9 @@ import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/maid-details/presentation/widgets/maid_details_content_widget.dart';
 class PremiumMermaidsWidget extends StatelessWidget {
+  final Widget? widget;
   const PremiumMermaidsWidget({
-    super.key,
+    super.key, this.widget,
   });
 
   @override
@@ -23,7 +24,7 @@ class PremiumMermaidsWidget extends StatelessWidget {
         backgroundColor: AppColors.kYellowColor,
         radius: 12.r,
         padding: padding12H,
-        widget: Column(
+        widget:widget?? Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

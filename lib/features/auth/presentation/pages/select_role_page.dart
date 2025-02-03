@@ -8,8 +8,11 @@ import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/custom_space.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
+import 'package:maid_service/core/hive-boxes/hive_boxes.dart';
 import 'package:maid_service/core/utils/static_json.dart';
+import 'package:maid_service/core/utils/static_variables.dart';
 import 'package:maid_service/features/auth/presentation/pages/sign_up_page.dart';
+import 'package:maid_service/features/bottom-navigation/presentation/pages/profile/add_maid_information_page.dart';
 import 'package:maid_service/features/splash-onboarding/presentation/widgets/onboarding_widget.dart';
 
 class SelectRolePage extends StatelessWidget {
@@ -78,6 +81,8 @@ class SelectRolePage extends StatelessWidget {
                     ),
                     CustomButton(
                       onTap: () {
+                        HiveBoxes.getSelectedRole().put(selectedRole, 'Client');
+
                         Navigator.pushNamed(context, SignUpPage.routeName);
                       },
                       img: findMaidIcon,
@@ -89,7 +94,8 @@ class SelectRolePage extends StatelessWidget {
                       textColor: AppColors.kPrimaryColor,
                       borderColor: AppColors.kPrimaryColor,
                       onTap: () {
-                        Navigator.pushNamed(context, SignUpPage.routeName);
+                        HiveBoxes.getSelectedRole().put(selectedRole, 'Maid');
+                        Navigator.pushNamed(context, AddMaidInformationPage.routeName);
                       },
                       img: becomeMaidIcon,
                       title: AppStaticString.becomeAMaid,

@@ -12,8 +12,12 @@ import 'package:maid_service/core/constants/text_style_constant.dart';
 import 'package:maid_service/features/maid-details/presentation/pages/maid_details_page.dart';
 
 class MaidCardWidget extends StatelessWidget {
+  final String? description;
+  final bool? fromMaid;
   const MaidCardWidget({
     super.key,
+    this.description,
+    this.fromMaid = false,
   });
 
   @override
@@ -22,28 +26,42 @@ class MaidCardWidget extends StatelessWidget {
       spacing: 12.h,
       children: [
         ProfilePicNameWithSubtitle(
-          showTrailing: true,
+          showTrailing:fromMaid==true?false: true,
           showAvailability: true,
+          profileName: fromMaid==true?AppStaticString.maidNeeded:'Jenny Wilson',
+          profileSubText: fromMaid==true?'Jenny Wilson':null,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(
-            4,
-            (index) {
-              ///===================== dynamic maid work ======================///
+        description != null
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(text: description ?? ''),
+                  CustomText(
+                    text: 'More',
+                    style: poppinsMedium,
+                    color: AppColors.kPrimaryColor,
+                  )
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                  4,
+                  (index) {
+                    ///===================== dynamic maid work ======================///
 
-              return CustomContainer(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-                  widget: CustomText(
-                    text: index > 2 ? '02+ More' : 'Dusting',
-                    style: poppinsRegular,
-                    fontSize: getFontSizeSmall(context),
-                    color: AppColors.kSubTextColor,
-                  ));
-            },
-          ),
-        ),
+                    return CustomContainer(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 6.h),
+                        widget: CustomText(
+                          text: index > 2 ? '02+ More' : 'Dusting',
+                          style: poppinsRegular,
+                          fontSize: getFontSizeSmall(context),
+                          color: AppColors.kSubTextColor,
+                        ));
+                  },
+                ),
+              ),
         Row(
           children: [
             Expanded(
@@ -93,7 +111,8 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
     this.profileName,
     this.profileSubText,
     this.subTextColor,
-    this.showAvailability = false, this.trailing,
+    this.showAvailability = false,
+    this.trailing,
   });
 
   @override
@@ -145,9 +164,10 @@ class ProfilePicNameWithSubtitle extends StatelessWidget {
         ///=========================dynamic rate ========================///
 
         showTrailing == true
-            ?trailing?? RatingValueContainerWidget(
-                ratingValue: '0.5',
-              )
+            ? trailing ??
+                RatingValueContainerWidget(
+                  ratingValue: '0.5',
+                )
             : SizedBox.shrink()
       ],
     );
@@ -158,9 +178,11 @@ class CircularProfilePicture extends StatelessWidget {
   const CircularProfilePicture({
     super.key,
     required this.profilePic,
+    this.height,
   });
 
   final String? profilePic;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -168,8 +190,8 @@ class CircularProfilePicture extends StatelessWidget {
         boxShape: BoxShape.circle,
         imageErrorUrl: dummyUserIcon,
         imageUrl: profilePic ?? '',
-        height: 44.w,
-        width: 44.w);
+        height: height ?? 44.w,
+        width: height ?? 44.w);
   }
 }
 
@@ -180,35 +202,36 @@ class RatingValueContainerWidget extends StatelessWidget {
   final Function()? function;
   const RatingValueContainerWidget({
     super.key,
-     this.ratingValue,
-    this.color, this.child, this.function,
+    this.ratingValue,
+    this.color,
+    this.child,
+    this.function,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:function?? () {
-
-      },
+      onTap: function ?? () {},
       child: CustomContainer(
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
         backgroundColor: color ?? AppColors.kGreenColor.withOpacity(.2),
-        widget:child?? Row(
-          spacing: 6.w,
-          children: [
-            Icon(
-              CupertinoIcons.star,
-              color: AppColors.kGreenTextColor,
-              size: 15.sp,
+        widget: child ??
+            Row(
+              spacing: 6.w,
+              children: [
+                Icon(
+                  CupertinoIcons.star,
+                  color: AppColors.kGreenTextColor,
+                  size: 15.sp,
+                ),
+                CustomText(
+                  text: ratingValue ?? '0',
+                  style: poppinsMedium,
+                  fontSize: getFontSizeSmall(context),
+                  color: AppColors.kGreenTextColor,
+                )
+              ],
             ),
-            CustomText(
-              text: ratingValue??'0',
-              style: poppinsMedium,
-              fontSize: getFontSizeSmall(context),
-              color: AppColors.kGreenTextColor,
-            )
-          ],
-        ),
       ),
     );
   }

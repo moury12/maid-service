@@ -15,6 +15,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(initialPhase);
+  await Hive.openBox(role);
   runApp(
 
     DevicePreview(
