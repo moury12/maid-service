@@ -5,7 +5,7 @@ import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
-import 'package:maid_service/features/maid-earnings/presentation/pages/maid_earnings_page.dart';
+import 'package:maid_service/features/maid-earnings/presentation/widgets/transection_history_widget.dart';
 
 class AllTransectionHistory extends StatelessWidget {
   static const String routeName = 'transection-history';

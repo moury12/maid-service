@@ -1,20 +1,15 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maid_service/core/components/custom_appbar.dart';
 import 'package:maid_service/core/components/custom_text.dart';
 import 'package:maid_service/core/components/tab-bar/dynamic_tab_widget.dart';
-import 'package:maid_service/core/constants/app_colors.dart';
-import 'package:maid_service/core/constants/app_image_constant.dart';
 import 'package:maid_service/core/constants/app_static_strings.dart';
 import 'package:maid_service/core/constants/fontsize_constant.dart';
 import 'package:maid_service/core/constants/padding_constant.dart';
 import 'package:maid_service/core/constants/text_style_constant.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/widgets/coin_point_widget.dart';
 import 'package:maid_service/features/bottom-navigation/presentation/widgets/home_title_widget.dart';
-import 'package:maid_service/features/bottom-navigation/presentation/widgets/maid_card_widget.dart';
-import 'package:maid_service/features/maid-details/presentation/widgets/maid_details_content_widget.dart';
 import 'package:maid_service/features/maid-earnings/presentation/pages/all_transection_history.dart';
+import 'package:maid_service/features/maid-earnings/presentation/widgets/earning_chart_widget.dart';
+import 'package:maid_service/features/maid-earnings/presentation/widgets/transection_history_widget.dart';
 
 class MaidEarningsPage extends StatelessWidget {
   static const String routeName = '/maid-earnings';
@@ -46,108 +41,10 @@ class MaidEarningsPage extends StatelessWidget {
                 AppStaticString.monthly,
                 AppStaticString.yearly
               ], tabContent: [
-                CustomContainerWithBorder(
-                    borderColor: AppColors.kFadeWhiteColor,
-                    child: Column(
-                      spacing: 12.h,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomText(
-                          text: AppStaticString.totalUsd,
-                          style: poppinsSemiBold,
-                          fontSize: getFontSizeLarge(context),
-                        ),
-                        Row(
-                          spacing: 6.w,
-                          children: [
-                            RatingValueContainerWidget(
-                              icon: Icons.arrow_upward,
-                              ratingValue: '2.6%',
-                            ),
-                            CustomText(
-                              text: 'Higher than last week',
-                              color: AppColors.kSubTextColor,
-                              fontSize: getFontSizeSmall(context),
-                            )
-                          ],
-                        ),
-                        AspectRatio(
-                          aspectRatio: 1.7,
-                          child: LineChart(LineChartData(
-                              gridData: FlGridData(
-                                  show: true, drawHorizontalLine: false),
-                              titlesData: FlTitlesData(
-                                bottomTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                        showTitles: true,
-                                        getTitlesWidget: (value, meta) {
-                                          final years = [
-                                            '2024',
-                                            '2023',
-                                            '2022',
-                                            '2021',
-                                            '2020',
-                                            '2019',
-                                            '2018'
-                                          ];
-                                          return Padding(
-                                            padding: EdgeInsets.only(top: 8.h),
-                                            child: CustomText(
-                                              text: years[
-                                                  value.toInt() % years.length],
-                                              style: poppinsMedium,
-                                              color: AppColors.kSubTextColor,
-                                              fontSize:
-                                                  getFontSizeSmall(context),
-                                            ),
-                                          );
-                                        },
-                                        interval: 1,
-                                        reservedSize: 20)),
-                                leftTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                  showTitles: true,
-                                  getTitlesWidget: (value, meta) {
-                                    return CustomText(
-                                      text: '${value.toInt()}k',
-                                      style: poppinsMedium,
-                                      color: AppColors.kSubTextColor,
-                                      fontSize: getFontSizeSmall(context),
-                                    );
-                                  },
-                                  interval: 2.5,
-                                  reservedSize: 28,
-                                )),
-                                topTitles: AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                                rightTitles: AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false)),
-                              ),
-                              borderData: FlBorderData(show: false),
-                              lineBarsData: [
-                                LineChartBarData(
-                                    spots: [
-                                      FlSpot(0, 2.5),
-                                      FlSpot(1, 3.5),
-                                      FlSpot(2, 5),
-                                      FlSpot(3, 4),
-                                      FlSpot(4, 6),
-                                      FlSpot(5, 7.5),
-                                      FlSpot(6, 8),
-                                    ],
-                                    isCurved: true,
-                                    color: AppColors.kPurpleColor,
-                                    barWidth: 2,
-                                    belowBarData: BarAreaData(
-                                        show: true,
-                                        color: AppColors.kPurpleColor
-                                            .withOpacity(.2)))
-                              ])),
-                        )
-                      ],
-                    )),
-                CustomText(text: 'text'),
-                CustomText(text: 'text'),
+                EarningChartWidget(),
+                EarningChartWidget(),
+                EarningChartWidget(),
+
               ]),
               HomeTitleWidget(
                 title: AppStaticString.transectionHistory,
@@ -169,68 +66,4 @@ class MaidEarningsPage extends StatelessWidget {
   }
 }
 
-class TransectionHistoryWidget extends StatelessWidget {
-  final bool? fromMermaidCoin;
-  const TransectionHistoryWidget({
-    super.key,
-    this.fromMermaidCoin = false,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: padding4V,
-      child: CustomContainerWithBorder(
-          borderColor: AppColors.kFadeWhiteColor,
-          child: Row(
-            spacing: 12.w,
-            children: [
-              CircularProfilePicture(profilePic: ''),
-              Expanded(
-                child: Column(
-                  spacing: 6.h,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: 'Brooklyn Simmons',
-                      style: poppinsMedium,
-                      fontSize: getFontSizeLarge(context),
-                    ),
-                    fromMermaidCoin == false
-                        ? CustomText(
-                            text: 'Via Stripe',
-                            style: poppinsRegular,
-                            color: AppColors.kSubTextColor,
-                            fontSize: getFontSizeSmall(context),
-                          )
-                        : Row(
-                            children: [
-                              Image.asset(
-                                mermaidLogoWithText,
-                                color: AppColors.kPrimaryColor,
-                                height: 16.h,
-                              ),
-                              CustomText(
-                                text: AppStaticString.mrmdCoin,
-                                style: poppinsMedium,
-                                fontSize: getFontSizeExtraSmall(context),
-                              ),
-                            ],
-                          ),
-                  ],
-                ),
-              ),
-              fromMermaidCoin == false
-                  ? CustomText(
-                      text: '80 USD',
-                      style: poppinsMedium,
-                      fontSize: getFontSizeLarge(context),
-                    )
-                  : CoinPointWidget(
-                      point: '50',
-                    )
-            ],
-          )),
-    );
-  }
-}
